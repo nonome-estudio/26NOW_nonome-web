@@ -9,7 +9,7 @@
   min-height:64px;
   display:flex;
   flex-direction:column;
-  justify-content:center; /* title centered in the white area by default */
+  justify-content:flex-start;
   gap:10px;
   transition:min-height 520ms ease, padding 520ms ease;
 }
@@ -33,7 +33,6 @@
 /* OPEN state (mobile tap) */
 .card[data-open="true"]{box-shadow:0 12px 30px rgba(0,0,0,.08);} 
 .card[data-open="true"] .body{
-  justify-content:flex-start;
   min-height:120px; /* expands down to fit 2 lines */
 }
 .card[data-open="true"] .desc{max-height:2.8em;opacity:.75;transform:translateY(0);} 
@@ -41,6 +40,6 @@
 /* HOVER state (desktop) mirrors OPEN */
 @media (hover: hover) and (pointer: fine){
   .card:hover{box-shadow:0 12px 30px rgba(0,0,0,.08);z-index:5;}
-  .card:hover .body{justify-content:flex-start;min-height:120px;}
+  .card:hover .body{min-height:120px;}
   .card:hover .desc{max-height:2.8em;opacity:.75;transform:translateY(0);} 
 }
