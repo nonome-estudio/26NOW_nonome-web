@@ -5,7 +5,7 @@ import type { CardProps } from './Card.types';
 const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
 ---
 
-<article class={styles.card} tabindex="0">
+<article class={styles.card} tabindex="0" role="button" aria-expanded="false" data-card>
   {imageSrc ? <img class={styles.img} src={imageSrc} alt={imageAlt ?? ''} loading="lazy" /> : null}
   <div class={styles.inner}>
     <div class={styles.title}>{title}</div>
@@ -17,3 +17,50 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
     </div>
   ) : null}
 </article>
+
+<script>
+  // Mobile/touch behavior:
+  // - 1st tap: select/expand (reveal description)
+  // - 2nd tap: reserved for future "enter" behavior (v2)
+  (() => {
+    const isTouch = matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouch) return;
+
+    const cards = Array.from(document.querySelectorAll('[data-card]'));
+
+    function closeAll(except) {
+      for (const el of cards) {
+        if (el !== except) {
+          el.classList.remove('isOpen');
+          el.setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+
+    for (const el of cards) {
+      el.addEventListener('click', (e) => {
+        const isOpen = el.classList.contains('isOpen');
+        if (!isOpen) {
+          e.preventDefault();
+          closeAll(el);
+          el.classList.add('isOpen');
+          el.setAttribute('aria-expanded', 'true');
+        } else {
+          // v2: navigate to detail. For v1 we keep it selected.
+          el.classList.add('isOpen');
+          el.setAttribute('aria-expanded', 'true');
+        }
+      }, { passive: false });
+
+      // Keyboard: Enter/Space toggles open state.
+      el.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        const isOpen = el.classList.contains('isOpen');
+        closeAll(el);
+        el.classList.toggle('isOpen', !isOpen);
+        el.setAttribute('aria-expanded', (!isOpen).toString());
+      });
+    }
+  })();
+</script>

@@ -4,17 +4,19 @@
 .inner{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:140px;}
 .title{font-size:14px;letter-spacing:.02em;text-transform:lowercase;opacity:.9;}
 
-/* Default (touch/mobile): description sits in normal flow (no empty reserved space). */
-.reveal{padding:0 18px 18px;}
-.desc{font-size:13px;line-height:1.4;max-height:2.8em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;opacity:.75;}
+/* Touch/mobile: description is hidden by default and expands on first tap (isOpen). */
+.reveal{padding:0 18px;max-height:0;overflow:hidden;opacity:0;transform:translateY(6px);transition:max-height 220ms ease, opacity 180ms ease, transform 180ms ease;}
+.desc{padding:0 0 18px;font-size:13px;line-height:1.4;max-height:2.8em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.card.isOpen .reveal{max-height:72px;opacity:.75;transform:translateY(0);} 
 
 /* Hover-capable devices: description "extends" into reserved space.
    (Grid item reserves the space; card reveals into it without reflow.) */
 @media (hover: hover) and (pointer: fine){
   .card{overflow:visible;}
   .card:hover{transform:scale(1.01);box-shadow:0 12px 30px rgba(0,0,0,.08);z-index:5;}
-  .reveal{position:absolute;left:0;right:0;bottom:-56px;padding:0 18px 18px;}
-  .desc{opacity:0;transform:translateY(6px);transition:opacity 180ms ease, transform 180ms ease;transition-delay:220ms;}
+
+  .reveal{position:absolute;left:0;right:0;bottom:-56px;padding:0 18px 18px;max-height:none;opacity:1;transform:none;transition:none;}
+  .desc{padding:0;font-size:13px;line-height:1.4;max-height:2.8em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;opacity:0;transform:translateY(6px);transition:opacity 180ms ease, transform 180ms ease;transition-delay:220ms;}
   .card:hover .desc,.card:focus-within .desc{opacity:.75;transform:translateY(0);} 
 }
 
