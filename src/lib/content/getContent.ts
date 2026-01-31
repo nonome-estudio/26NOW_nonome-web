@@ -1,7 +1,7 @@
 import type { CardItem } from '../../types/content';
 
 export function getArchitectureProjects(): CardItem[] {
-  // Placeholder data until content collections are implemented.
+  // Placeholder copy until content collections are implemented.
   // Uses the 6 architecture images copied into /public/images/projects.
   return [
     {
@@ -11,8 +11,8 @@ export function getArchitectureProjects(): CardItem[] {
         code: 'AR1',
         title: { es: 'Auditorio Ribeira', en: 'Ribeira Auditorium' },
         description: {
-          es: 'Descripción breve (placeholder).',
-          en: 'Short placeholder description.'
+          es: 'Equipamiento cultural de escala urbana, sobrio y luminoso.\nUn interior flexible para música, actos y vida pública.',
+          en: 'Urban cultural venue with a sober, luminous presence.\nA flexible interior for music, events, and civic life.'
         },
         image: {
           src: '/images/projects/auditorio-ribeira.png',
@@ -27,8 +27,8 @@ export function getArchitectureProjects(): CardItem[] {
         code: 'CI1',
         title: { es: 'Centro de Innovación', en: 'Innovation Center' },
         description: {
-          es: 'Descripción breve (placeholder).',
-          en: 'Short placeholder description.'
+          es: 'Espacios de trabajo y encuentro organizados con claridad.\nLuz natural y recorridos simples para facilitar colaboración.',
+          en: 'Work and meeting spaces organized with clarity.\nNatural light and simple circulation to support collaboration.'
         },
         image: {
           src: '/images/projects/centro-innovacion.png',
@@ -43,8 +43,8 @@ export function getArchitectureProjects(): CardItem[] {
         code: 'OC1',
         title: { es: 'O Castro', en: 'O Castro' },
         description: {
-          es: 'Descripción breve (placeholder).',
-          en: 'Short placeholder description.'
+          es: 'Intervención sensible en un entorno con identidad propia.\nVolúmenes contenidos y materialidad serena, sin ruido.',
+          en: 'A sensitive intervention in a place with strong identity.\nRestrained volumes and calm materiality, without noise.'
         },
         image: {
           src: '/images/projects/o-castro.png',
@@ -59,8 +59,8 @@ export function getArchitectureProjects(): CardItem[] {
         code: 'PT1',
         title: { es: 'Pazo Toubes', en: 'Pazo Toubes' },
         description: {
-          es: 'Descripción breve (placeholder).',
-          en: 'Short placeholder description.'
+          es: 'Relectura contemporánea desde el respeto al patrimonio.\nEquilibrio entre memoria, uso y confort actual.',
+          en: 'A contemporary re-reading rooted in respect for heritage.\nBalance between memory, use, and present-day comfort.'
         },
         image: {
           src: '/images/projects/pazo-toubes.png',
@@ -75,8 +75,8 @@ export function getArchitectureProjects(): CardItem[] {
         code: 'RB1',
         title: { es: 'RAG Pardo Bazán', en: 'RAG Pardo Bazán' },
         description: {
-          es: 'Descripción breve (placeholder).',
-          en: 'Short placeholder description.'
+          es: 'Arquitectura institucional: orden, proporción y silencio.\nUna presencia clara que acompaña el espacio público.',
+          en: 'Institutional architecture: order, proportion, and quietness.\nA clear presence that supports the public realm.'
         },
         image: {
           src: '/images/projects/rag-pardo-bazan.png',
@@ -91,8 +91,8 @@ export function getArchitectureProjects(): CardItem[] {
         code: 'TA1',
         title: { es: 'Terras Almacén', en: 'Terras Warehouse' },
         description: {
-          es: 'Descripción breve (placeholder).',
-          en: 'Short placeholder description.'
+          es: 'Infraestructura funcional resuelta con precisión y economía.\nLógica constructiva clara para un uso eficiente.',
+          en: 'Functional infrastructure solved with precision and economy.\nClear constructive logic for efficient use.'
         },
         image: {
           src: '/images/projects/terras-almacen.png',
