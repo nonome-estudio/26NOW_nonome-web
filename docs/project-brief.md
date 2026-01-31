@@ -13,9 +13,9 @@ Minimalist portfolio website for Nonome, a design-led studio operating across ar
 The website will live under a single domain (nonome.es) and be structured into two clear verticals:
 
 - **/architecture** (v1 – initial launch)
-- **/digital** (v2 – future phase)
+- **/digital** (v1 – initial launch; details in v2)
 
-The first release focuses exclusively on the architecture portfolio, with bilingual support (EN/ES), strong visual storytelling, and a clean, editorial aesthetic. The structure must be future-proofed to allow seamless expansion into digital services without redesigning the site.
+The first release includes **both** Architecture and Digital verticals, with bilingual support (EN/ES), strong visual storytelling, and a clean, editorial aesthetic. The structure must support symmetric growth in both verticals without redesigning the site.
 
 ---
 
@@ -73,22 +73,19 @@ nonome.es (landing page)
 - Editorial / gallery-like presentation
 - Structure prepared for future expansion without refactor
 
-**MVP Features (v1 – Architecture)**:
+**MVP Features (v1)**:
 
 1. Landing page with navigation to /architecture and /digital
-2. Architecture project gallery
-3. Individual project pages with:
-   - Image galleries
-   - Short descriptive texts
-   - Optional metadata (location, year, type)
+2. **Architecture**: project gallery (cards)
+3. **Digital**: services/POCs gallery (cards; mockups allowed)
 4. Header with section navigation and logo (returns to landing)
 5. Footer with inline contact information
 6. Legal page (cookies, compliance)
-7. Full bilingual support (English / Spanish)
+7. Full bilingual support (Spanish primary / English secondary)
 8. Fully responsive design optimized for visual portfolios
 
 **Out of Scope (v1)**: 
-- Digital services section (/digital) – planned for v2
+- Detail pages for both verticals (architecture project detail; digital service/POC detail) → planned for v2
 - 3D model viewers or interactive visualizations
 - Blog, news, or editorial content
 - User authentication or client areas
@@ -158,11 +155,11 @@ Potential and existing architecture clients:
 - Design: Minimalist aesthetic, limited branding assets initially
 
 **Assumptions**: 
-1. Owner will provide all images, texts, and EN/ES translations
+1. Owner will provide all images, texts, and ES/EN translations (ES primary)
 2. Minimalist visual language is acceptable without full brand manual
 3. Azure resources can be provisioned without blockers
-4. Domain nonome.es is owned and configurable
-5. Initial content will be sufficient for MVP launch (or can launch with a subset)
+4. Domains nonome.es and www.nonome.es are owned and configurable
+5. Initial content for v1: 6 architecture projects + 3–4 digital items (mockups allowed)
 
 **Dependencies**: 
 - Azure infrastructure setup (subscription, resource groups, hosting)
