@@ -31,12 +31,12 @@
 }
 
 /* OPEN state (mobile tap) */
-.card.isOpen .body{
+.card[data-open="true"] .body{
   justify-content:flex-start;
   min-height:120px; /* expands down to fit 2 lines */
 }
-.card.isOpen .title{transform:translateY(-2px);} 
-.card.isOpen .desc{max-height:2.8em;opacity:.75;transform:translateY(0);} 
+.card[data-open="true"] .title{transform:translateY(-6px);} 
+.card[data-open="true"] .desc{max-height:2.8em;opacity:.75;transform:translateY(0);} 
 
 /* HOVER state (desktop) mirrors OPEN */
 @media (hover: hover) and (pointer: fine){

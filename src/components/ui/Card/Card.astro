@@ -5,7 +5,7 @@ import type { CardProps } from './Card.types';
 const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
 ---
 
-<article class={styles.card} tabindex="0" role="button" aria-expanded="false" data-card>
+<article class={styles.card} tabindex="0" role="button" aria-expanded="false" data-card data-open="false">
   {imageSrc ? <img class={styles.img} src={imageSrc} alt={imageAlt ?? ''} loading="lazy" /> : null}
 
   <div class={styles.body}>
@@ -27,7 +27,7 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
     function closeAll(except) {
       for (const el of cards) {
         if (el !== except) {
-          el.classList.remove('isOpen');
+          el.setAttribute('data-open', 'false');
           el.setAttribute('aria-expanded', 'false');
         }
       }
@@ -35,15 +35,15 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
 
     for (const el of cards) {
       el.addEventListener('click', (e) => {
-        const isOpen = el.classList.contains('isOpen');
+        const isOpen = el.getAttribute('data-open') === 'true';
         if (!isOpen) {
           e.preventDefault();
           closeAll(el);
-          el.classList.add('isOpen');
+          el.setAttribute('data-open', 'true');
           el.setAttribute('aria-expanded', 'true');
         } else {
           // v2: navigate to detail. For v1 keep it selected.
-          el.classList.add('isOpen');
+          el.setAttribute('data-open', 'true');
           el.setAttribute('aria-expanded', 'true');
         }
       }, { passive: false });
@@ -53,7 +53,7 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
         const t = evt.target;
         if (!(t instanceof Node)) return;
         if (!el.contains(t)) {
-          el.classList.remove('isOpen');
+          el.setAttribute('data-open', 'false');
           el.setAttribute('aria-expanded', 'false');
         }
       });
@@ -62,9 +62,9 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
       el.addEventListener('keydown', (e) => {
         if (e.key !== 'Enter' && e.key !== ' ') return;
         e.preventDefault();
-        const isOpen = el.classList.contains('isOpen');
+        const isOpen = el.getAttribute('data-open') === 'true';
         closeAll(el);
-        el.classList.toggle('isOpen', !isOpen);
+        el.setAttribute('data-open', (!isOpen).toString());
         el.setAttribute('aria-expanded', (!isOpen).toString());
       });
     }
