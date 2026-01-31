@@ -151,8 +151,8 @@ Potential and existing architecture clients:
 **Constraints**: 
 - No fixed deadline – quality prioritized over speed
 - Budget: Flexible but reasonable
-- Hosting: Azure required
-- CI/CD: Azure DevOps
+- Hosting: static hosting with custom domain + HTTPS (keep costs low)
+- CI/CD: GitHub Actions
 - Design: Minimalist aesthetic, limited branding assets initially
 
 **Assumptions**: 
@@ -163,8 +163,8 @@ Potential and existing architecture clients:
 5. Initial content for v1: 6 architecture projects + 3–4 digital items (mockups allowed)
 
 **Dependencies**: 
-- Azure infrastructure setup (subscription, resource groups, hosting)
-- DNS and SSL configuration for nonome.es
+- DNS and SSL configuration for nonome.es (+ www)
+- GitHub Pages configuration (custom domain + Actions deploy)
 - Content delivery from owner (projects, images, text)
 
 ---
@@ -175,7 +175,7 @@ Potential and existing architecture clients:
 |------|--------|------------|------------|
 | Content delays | High | Medium | Early content audit, launch with limited projects |
 | Lack of branding assets | Medium | High | Define minimal typographic and spacing system |
-| Azure setup delays | Medium | Low | Start infra setup early |
+| Hosting/DNS setup delays | Medium | Low | Start DNS + Pages setup early |
 | Scope creep to digital services | Medium | Medium | Freeze v1 scope strictly to architecture |
 | Image performance issues | Medium | Medium | CDN, lazy loading, image optimization pipeline |
 
@@ -201,19 +201,19 @@ Potential and existing architecture clients:
 **Key Items for Web Team**:
 
 1. Confirm content readiness and project selection
-2. Define Azure hosting strategy (Static Web Apps preferred)
-3. Set up CI/CD via Azure DevOps
+2. Define hosting strategy (GitHub Pages)
+3. Set up CI/CD via GitHub Actions
 4. Define typography, grid, spacing, and color tokens
 5. Image optimization strategy (formats, sizes, lazy loading)
 6. Decide on CMS vs static generation
 
 **Architecture Notes for Web PM**:
 
-- Image-heavy portfolio → CDN + optimization mandatory
+- Image-heavy portfolio → image optimization + lazy loading mandatory
 - Bilingual architecture (i18n strategy, content structure)
 - Static Site Generation recommended for performance and cost
 - Structure must allow /digital expansion without redesign
-- **Component-based architecture required**: Easier maintenance and adjustments (reusable header, footer, project cards, etc.)
+- **Component-based architecture required**: reusable header/footer/cards with strict typed interfaces (type-first)
 
 **Next Steps**:
 
