@@ -1,20 +1,102 @@
 import type { CardItem } from '../../types/content';
 
 export function getArchitectureProjects(): CardItem[] {
+  // Placeholder data until content collections are implemented.
+  // Uses the 6 architecture images copied into /public/images/projects.
   return [
     {
       kind: 'project',
       item: {
-        id: 'arch-001',
-        code: 'A001',
-        title: { es: 'Proyecto 01', en: 'Project 01' },
+        id: 'arch-auditorio-ribeira',
+        code: 'AR1',
+        title: { es: 'Auditorio Ribeira', en: 'Ribeira Auditorium' },
         description: {
-          es: 'Descripción breve de ejemplo. Sustituir por contenido real.',
-          en: 'Short placeholder description. Replace with real content.'
+          es: 'Descripción breve (placeholder).',
+          en: 'Short placeholder description.'
         },
         image: {
-          src: '/placeholder/card.svg',
-          alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' }
+          src: '/images/projects/auditorio-ribeira.png',
+          alt: { es: 'Auditorio Ribeira', en: 'Ribeira Auditorium' }
+        }
+      }
+    },
+    {
+      kind: 'project',
+      item: {
+        id: 'arch-centro-innovacion',
+        code: 'CI1',
+        title: { es: 'Centro de Innovación', en: 'Innovation Center' },
+        description: {
+          es: 'Descripción breve (placeholder).',
+          en: 'Short placeholder description.'
+        },
+        image: {
+          src: '/images/projects/centro-innovacion.png',
+          alt: { es: 'Centro de Innovación', en: 'Innovation Center' }
+        }
+      }
+    },
+    {
+      kind: 'project',
+      item: {
+        id: 'arch-o-castro',
+        code: 'OC1',
+        title: { es: 'O Castro', en: 'O Castro' },
+        description: {
+          es: 'Descripción breve (placeholder).',
+          en: 'Short placeholder description.'
+        },
+        image: {
+          src: '/images/projects/o-castro.png',
+          alt: { es: 'O Castro', en: 'O Castro' }
+        }
+      }
+    },
+    {
+      kind: 'project',
+      item: {
+        id: 'arch-pazo-toubes',
+        code: 'PT1',
+        title: { es: 'Pazo Toubes', en: 'Pazo Toubes' },
+        description: {
+          es: 'Descripción breve (placeholder).',
+          en: 'Short placeholder description.'
+        },
+        image: {
+          src: '/images/projects/pazo-toubes.png',
+          alt: { es: 'Pazo Toubes', en: 'Pazo Toubes' }
+        }
+      }
+    },
+    {
+      kind: 'project',
+      item: {
+        id: 'arch-rag-pardo-bazan',
+        code: 'RB1',
+        title: { es: 'RAG Pardo Bazán', en: 'RAG Pardo Bazán' },
+        description: {
+          es: 'Descripción breve (placeholder).',
+          en: 'Short placeholder description.'
+        },
+        image: {
+          src: '/images/projects/rag-pardo-bazan.png',
+          alt: { es: 'RAG Pardo Bazán', en: 'RAG Pardo Bazán' }
+        }
+      }
+    },
+    {
+      kind: 'project',
+      item: {
+        id: 'arch-terras-almacen',
+        code: 'TA1',
+        title: { es: 'Terras Almacén', en: 'Terras Warehouse' },
+        description: {
+          es: 'Descripción breve (placeholder).',
+          en: 'Short placeholder description.'
+        },
+        image: {
+          src: '/images/projects/terras-almacen.png',
+          alt: { es: 'Terras Almacén', en: 'Terras Warehouse' }
         }
       }
     }
