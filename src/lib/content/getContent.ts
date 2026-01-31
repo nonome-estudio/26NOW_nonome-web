@@ -109,13 +109,13 @@ export function getDigitalServices(): CardItem[] {
       kind: 'service',
       item: {
         id: 'srv-bim',
-        code: 'SRV',
+        code: 'BIM',
         title: { es: 'Consultoría BIM', en: 'BIM Consulting' },
         description: {
-          es: 'Procesos, documentación, análisis y acompañamiento.',
-          en: 'Processes, documentation, analysis, and advisory.'
+          es: 'Procesos, documentación y estándares para equipos y proyectos.\nDiagnóstico, roadmap y acompañamiento en implantación.',
+          en: 'Processes, documentation, and standards for teams and projects.\nAssessment, roadmap, and hands-on implementation support.'
         },
-        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
+        image: { src: '/images/digital/services/bim-consulting.svg', alt: { es: 'Consultoría BIM', en: 'BIM Consulting' } }
       }
     },
     {
@@ -125,23 +125,23 @@ export function getDigitalServices(): CardItem[] {
         code: 'WEB',
         title: { es: 'Desarrollo web', en: 'Web Development' },
         description: {
-          es: 'Apps, modelos y herramientas enfocadas a experiencia de usuario.',
-          en: 'Apps, models, and tools focused on clean user experience.'
+          es: 'Sitios y herramientas a medida para comunicar y operar.\nInterfaces limpias, rápidas y orientadas a usuario.',
+          en: 'Custom sites and tools to communicate and operate.\nClean, fast interfaces designed around user experience.'
         },
-        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
+        image: { src: '/images/digital/services/web-development.svg', alt: { es: 'Desarrollo web', en: 'Web Development' } }
       }
     },
     {
       kind: 'service',
       item: {
         id: 'srv-custom',
-        code: 'CST',
+        code: 'DEV',
         title: { es: 'Desarrollos a medida', en: 'Custom Development' },
         description: {
-          es: 'Revit, Navisworks, CAD, Civil 3D… automatización y plugins.',
-          en: 'Revit, Navisworks, CAD, Civil 3D… automation and plugins.'
+          es: 'Automatización y herramientas para Revit, Navisworks, CAD y Civil 3D.\nScripts, plugins y pipelines robustos para producción.',
+          en: 'Automation and tools for Revit, Navisworks, CAD, and Civil 3D.\nScripts, plugins, and robust pipelines for production.'
         },
-        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
+        image: { src: '/images/digital/services/custom-development.svg', alt: { es: 'Desarrollos a medida', en: 'Custom Development' } }
       }
     }
   ];
@@ -152,14 +152,53 @@ export function getDigitalCases(): CardItem[] {
     {
       kind: 'case',
       item: {
-        id: 'case-001',
-        code: 'C01',
-        title: { es: 'Caso 01 (mockup)', en: 'Case 01 (mockup)' },
+        id: 'case-navis-clash-ai',
+        code: 'NCL',
+        title: { es: 'Navisworks clash analysis (AI-assisted)', en: 'Navisworks clash analysis (AI-assisted)' },
         description: {
-          es: 'Ejemplo de caso con enfoque en impacto/beneficio.',
-          en: 'Example case framed around outcome/benefit.'
+          es: 'Priorización de clashes y propuestas de resolución.\nMenos ruido, más decisiones rápidas y trazables.',
+          en: 'Clash prioritization and resolution suggestions.\nLess noise, faster decisions, and traceable outcomes.'
         },
-        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
+        image: { src: '/images/digital/cases/navisworks-clash-ai.svg', alt: { es: 'Navisworks clash analysis ai assisted', en: 'Navisworks clash analysis ai assisted' } }
+      }
+    },
+    {
+      kind: 'case',
+      item: {
+        id: 'case-navis-enrichment',
+        code: 'NEN',
+        title: { es: 'Navis model data enrichment', en: 'Navis model data enrichment' },
+        description: {
+          es: 'Zoning, parámetros y estructuración de datos del modelo.\nModelos más consultables, consistentes y reutilizables.',
+          en: 'Zoning, parameters, and structured model metadata.\nMore queryable, consistent, and reusable models.'
+        },
+        image: { src: '/images/digital/cases/navis-data-enrichment.svg', alt: { es: 'Navis model data enrichment', en: 'Navis model data enrichment' } }
+      }
+    },
+    {
+      kind: 'case',
+      item: {
+        id: 'case-ifc-viewer-web',
+        code: 'IFC',
+        title: { es: 'IFC model viewer custom website', en: 'IFC model viewer custom website' },
+        description: {
+          es: 'Visualización web ligera para compartir modelos IFC.\nAcceso rápido, controlado y sin instalar software.',
+          en: 'Lightweight web viewer to share IFC models.\nFast, controlled access without installing software.'
+        },
+        image: { src: '/images/digital/cases/ifc-viewer-website.svg', alt: { es: 'IFC model viewer custom website', en: 'IFC model viewer custom website' } }
+      }
+    },
+    {
+      kind: 'case',
+      item: {
+        id: 'case-model-qaqc',
+        code: 'QA',
+        title: { es: 'Model automated data QA/QC', en: 'Model automated data QA/QC' },
+        description: {
+          es: 'Chequeos automáticos de calidad y coherencia de datos.\nReportes claros para cerrar incidencias antes de emitir.',
+          en: 'Automated checks for data quality and consistency.\nClear reports to close issues before issuing deliverables.'
+        },
+        image: { src: '/images/digital/cases/model-qaqc.svg', alt: { es: 'Model automated data QAQC', en: 'Model automated data QAQC' } }
       }
     }
   ];

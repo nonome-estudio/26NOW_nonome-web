@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#f4f4f4"/>
+  <g fill="none" stroke="#c9c9c9" stroke-width="2">
+    <rect x="160" y="190" width="880" height="540"/>
+    <circle cx="420" cy="420" r="140"/>
+    <path d="M360 420 L405 470 L500 360" stroke="#777" stroke-width="8" fill="none"/>
+    <rect x="620" y="300" width="340" height="70"/>
+    <rect x="620" y="400" width="340" height="70"/>
+    <rect x="620" y="500" width="340" height="70"/>
+  </g>
+  <g fill="#8d8d8d" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial">
+    <text x="180" y="150" font-size="20">case</text>
+    <text x="180" y="185" font-size="28">automated model qa/qc</text>
+    <text x="180" y="215" font-size="16">rules · checks · reports</text>
+  </g>
+</svg>

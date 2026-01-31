@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#f4f4f4"/>
+  <g fill="none" stroke="#c9c9c9" stroke-width="2">
+    <rect x="140" y="180" width="920" height="560"/>
+    <circle cx="520" cy="460" r="120"/>
+    <circle cx="690" cy="460" r="120"/>
+    <path d="M620 360 L620 560"/>
+    <path d="M520 460 L720 460"/>
+  </g>
+  <circle cx="605" cy="460" r="10" fill="#777"/>
+  <g fill="#8d8d8d" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial">
+    <text x="160" y="140" font-size="20">case</text>
+    <text x="160" y="175" font-size="28">navisworks clash analysis</text>
+    <text x="160" y="205" font-size="16">ai assisted</text>
+  </g>
+</svg>
