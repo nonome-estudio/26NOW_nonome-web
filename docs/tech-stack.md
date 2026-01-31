@@ -41,7 +41,7 @@
 | **Content Structure** | File-based JSON | No database, git-versioned, build-time validation, simple editing |
 | **Schema Validation** | Astro Content Collections + Zod | Type-safe content, build fails on invalid data, automatic TypeScript types |
 | **Image Storage** | Git repository | Colocated with content, version-controlled, simple deployment |
-| **Version Control** | Git + Azure Repos | Source of truth, history, rollback capability, Azure DevOps integration |
+| **Version Control** | Git + GitHub | Source of truth, history, rollback capability, CI/CD integration |
 
 **Content Structure**:
 ```
@@ -97,9 +97,9 @@
 
 ## DevOps & Deployment
 
-**VCS**: Git + Azure Repos | **Branch Strategy**: Trunk-based (main + feature branches)
+**VCS**: Git + GitHub | **Branch Strategy**: Trunk-based (main + feature branches)
 
-**CI/CD Pipeline**: Azure DevOps Pipelines
+**CI/CD Pipeline**: GitHub Actions (recommended)
 
 **Pipeline Stages**:
 ```
@@ -131,7 +131,7 @@ Trigger: Push to any branch
     └─ Main branch → Production (nonome.es)
 ```
 
-**Hosting**: Azure Static Web Apps
+**Hosting**: Cloudflare Pages (recommended)
 
 **Deployment Strategy**:
 - **Feature branches**: Automatic staging URL (e.g., `nonome-pr-42.azurestaticapps.net`)
@@ -150,16 +150,15 @@ Trigger: Push to any branch
 
 ---
 
-## Azure Static Web Apps Configuration
+## Hosting Configuration (Cloudflare Pages)
 
 **Features Used**:
 - Static asset hosting (CDN included)
 - Custom domain with SSL (auto-provisioned)
-- Preview environments (staging slots per PR)
-- Built-in authentication (not needed v1, ready for v2)
-- Fallback routes (SPA-like navigation)
+- Preview deployments for PRs
+- Edge redirects (e.g., www → apex)
 
-**staticwebapp.config.json**:
+**Redirects / routing** (implementation choice):
 ```json
 {
   "routes": [
@@ -186,11 +185,10 @@ Trigger: Push to any branch
 ```
 
 **Custom Domain Setup** (Sprint 1 task):
-1. Add custom domain in Azure Portal: nonome.es
-2. Create CNAME record: `www` → `[static-app-url].azurestaticapps.net`
-3. Create A record: `@` → Azure Static Web Apps IP
-4. SSL certificate auto-provisioned by Azure (Let's Encrypt)
-5. Validation: 24-48h propagation
+1. Add the domain to Cloudflare (DNS managed by Cloudflare)
+2. Add `nonome.es` and `www.nonome.es` to Cloudflare Pages
+3. Set a redirect rule so **www → non-www** (or the opposite; pick one canonical)
+4. SSL is auto-provisioned
 
 **Preview Environments**:
 - Enabled by default for all PRs
@@ -204,9 +202,9 @@ Trigger: Push to any branch
 
 | Type | Tool | Coverage/Details |
 |------|------|------------------|
-| **Errors** | Browser Console + Azure Monitor | Frontend errors, build failures |
+| **Errors** | Browser Console + CI logs | Frontend errors, build failures |
 | **Performance** | Lighthouse CI | Core Web Vitals: LCP <2.5s, FID <100ms, CLS <0.1 |
-| **Uptime** | Azure Monitor | Built-in, 99.9% SLA |
+| **Uptime** | Cloudflare dashboard | Basic availability + edge network |
 | **Analytics** | None (v1) | Future: Privacy-focused (Plausible/Fathom) if needed |
 | **Build Logs** | Azure DevOps | 30-day retention, downloadable |
 
@@ -362,9 +360,8 @@ Trigger: Push to any branch
 
 | Service | Tier | Monthly Cost (EUR) |
 |---------|------|-------------------|
-| Azure Static Web Apps | Free | €0 |
-| Azure DevOps | Free (first 5 users) | €0 |
-| Azure Repos | Free (unlimited private repos) | €0 |
+| Cloudflare Pages | Free | €0 |
+| GitHub Actions | Free tier | €0 |
 | Custom Domain SSL | Included | €0 |
 | CDN Bandwidth | Included (100GB/mo free) | €0 |
 | Storage | Included | €0 |
@@ -375,9 +372,9 @@ Trigger: Push to any branch
 **Budget**: <€20/month (target met with €0/month)
 
 **Cost Triggers** (Future):
-- CDN bandwidth >100GB/month → €0.15/GB overage (unlikely, portfolio site)
-- Build minutes >1800/month → Paid tier (unlikely, ~50 builds/month = 150 mins)
-- Contact form (v2) → Azure Functions consumption (€0.20 per 1M executions)
+- Extremely high bandwidth (unlikely for a portfolio site) → consider Cloudflare plan upgrades
+- Very high build minutes → consider paid CI
+- Contact form (v2) → Cloudflare Workers / Forms provider (or similar)
 
 **Review**: Quarterly (check usage vs free tier limits)
 
@@ -621,7 +618,7 @@ ifcLoader.load(
 - [Astro Documentation](https://docs.astro.build)
 - [three.js Documentation](https://threejs.org/docs)
 - [web-ifc-three](https://github.com/IFCjs/web-ifc-three)
-- [Azure Static Web Apps Docs](https://learn.microsoft.com/en-us/azure/static-web-apps/)
+- [Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)
 - [GSAP Documentation](https://greensock.com/docs)
 
 ---

@@ -108,7 +108,7 @@ The design direction is strict grid + generous whitespace, with subtle hover ani
 
 **Acceptance Criteria**:
 - [ ] Gallery displays **6** project cards
-- [ ] Cards show: project name (at least on hover), a representative image, and year
+- [ ] Cards show: project name (at least on hover) and a representative image
 - [ ] Grid is strict and consistent across breakpoints
 - [ ] Hover animation is subtle and performant
 - [ ] Cards are **not clickable** in v1 (no navigation)

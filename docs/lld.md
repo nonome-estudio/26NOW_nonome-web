@@ -42,13 +42,12 @@ src/
 ### Card base
 - `CardBaseProps`
   - `title: string`
-  - `code?: string`
+  - `code?: string` (optional: internal or UI badge; TBD)
   - `href?: never` (v1 hover-only; no click)
   - `description?: string` (only revealed on hover)
 
 ### Variants
 - `ProjectCardProps extends CardBaseProps`
-  - `year: number`
 - `ServiceCardProps extends CardBaseProps`
 - `CaseCardProps extends CardBaseProps`
 
