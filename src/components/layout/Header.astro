@@ -26,9 +26,10 @@ const otherLang = lang === 'es' ? 'en' : 'es';
 </header>
 
 <style>
-  .header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 24px 12px;}
-  .logo{font-weight:600;letter-spacing:.02em;text-decoration:none;color:inherit;}
-  .nav{display:flex;gap:16px;}
-  .nav a,.lang{color:inherit;text-decoration:none;opacity:.75;}
+  .header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 16px 10px;flex-wrap:wrap;max-width:100%;}
+  .left,.right{flex:0 0 auto;}
+  .nav{display:flex;gap:12px;flex-wrap:wrap;min-width:0;}
+  .logo{font-weight:600;letter-spacing:.02em;text-decoration:none;color:inherit;white-space:nowrap;}
+  .nav a,.lang{color:inherit;text-decoration:none;opacity:.75;white-space:nowrap;}
   .nav a:hover,.lang:hover{opacity:1;}
 </style>
