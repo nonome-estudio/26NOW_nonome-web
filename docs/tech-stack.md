@@ -131,7 +131,7 @@ Trigger: Push to any branch
     └─ Main branch → Production (nonome.es)
 ```
 
-**Hosting**: Cloudflare Pages (recommended)
+**Hosting**: GitHub Pages (recommended)
 
 **Deployment Strategy**:
 - **Feature branches**: Automatic staging URL (e.g., `nonome-pr-42.azurestaticapps.net`)
@@ -150,13 +150,14 @@ Trigger: Push to any branch
 
 ---
 
-## Hosting Configuration (Cloudflare Pages)
+## Hosting Configuration (GitHub Pages)
 
 **Features Used**:
 - Static asset hosting (CDN included)
 - Custom domain with SSL (auto-provisioned)
-- Preview deployments for PRs
-- Edge redirects (e.g., www → apex)
+- GitHub Pages build + deploy
+- HTTPS enforcement
+- Redirects handled via DNS/canonical (or a small redirect page if needed)
 
 **Redirects / routing** (implementation choice):
 ```json
@@ -185,10 +186,12 @@ Trigger: Push to any branch
 ```
 
 **Custom Domain Setup** (Sprint 1 task):
-1. Add the domain to Cloudflare (DNS managed by Cloudflare)
-2. Add `nonome.es` and `www.nonome.es` to Cloudflare Pages
-3. Set a redirect rule so **www → non-www** (or the opposite; pick one canonical)
-4. SSL is auto-provisioned
+1. In GitHub repo settings, add custom domain `nonome.es` (and optionally `www.nonome.es`).
+2. In Dinahosting DNS:
+   - Set **A records** for apex (`nonome.es`) to GitHub Pages IPs
+   - Set **CNAME** for `www` to `<your-github-username>.github.io`
+3. Enable **Enforce HTTPS** in GitHub Pages.
+4. Choose a canonical host (recommend: `nonome.es`) and redirect the other host if desired.
 
 **Preview Environments**:
 - Enabled by default for all PRs
@@ -618,7 +621,7 @@ ifcLoader.load(
 - [Astro Documentation](https://docs.astro.build)
 - [three.js Documentation](https://threejs.org/docs)
 - [web-ifc-three](https://github.com/IFCjs/web-ifc-three)
-- [Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)
+- [GitHub Pages Docs](https://docs.github.com/pages)
 - [GSAP Documentation](https://greensock.com/docs)
 
 ---

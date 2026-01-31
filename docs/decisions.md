@@ -22,7 +22,7 @@
 ## 2026-01-31 — Domain canonicalization
 - **Decision**: Support `nonome.es` and `www.nonome.es` with a single canonical host.
 - **Rationale**: avoid duplicate content and SEO issues.
-- **Impact**: configure redirects at the edge/host.
+- **Impact**: configure via DNS + GitHub Pages custom domain settings (redirect if needed).
 
 ## 2026-01-31 — Visual direction: clean grid + subtle hover
 - **Decision**: Chipperfield-like cleanliness: strict grid, strong whitespace, minimal UI; subtle hover animations on cards.
