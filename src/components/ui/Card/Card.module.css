@@ -31,6 +31,7 @@
 }
 
 /* OPEN state (mobile tap) */
+.card[data-open="true"]{box-shadow:0 12px 30px rgba(0,0,0,.08);} 
 .card[data-open="true"] .body{
   justify-content:flex-start;
   min-height:120px; /* expands down to fit 2 lines */

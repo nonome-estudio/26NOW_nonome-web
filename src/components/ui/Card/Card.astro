@@ -19,9 +19,8 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
   // - 1st tap: select/expand (reveal description)
   // - 2nd tap: reserved for future "enter" behavior (v2)
   (() => {
-    const isTouch = matchMedia('(hover: none) and (pointer: coarse)').matches;
-    if (!isTouch) return;
-
+    // We implement tap-to-expand using a data attribute so it works consistently
+    // across devices/browsers (some mobile browsers report hover capabilities).
     const cards = Array.from(document.querySelectorAll('[data-card]'));
 
     function closeAll(except) {
@@ -35,6 +34,7 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
 
     for (const el of cards) {
       el.addEventListener('click', (e) => {
+        // v1: no navigation, so a click becomes a "select/expand" interaction.
         const isOpen = el.getAttribute('data-open') === 'true';
         if (!isOpen) {
           e.preventDefault();
@@ -43,12 +43,13 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
           el.setAttribute('aria-expanded', 'true');
         } else {
           // v2: navigate to detail. For v1 keep it selected.
+          e.preventDefault();
           el.setAttribute('data-open', 'true');
           el.setAttribute('aria-expanded', 'true');
         }
       }, { passive: false });
 
-      // Tap outside closes.
+      // Tap/click outside closes.
       document.addEventListener('click', (evt) => {
         const t = evt.target;
         if (!(t instanceof Node)) return;
