@@ -239,9 +239,9 @@ The design direction is strict grid + generous whitespace, with subtle hover ani
 
 ## Open Questions
 
-1. **Digital services taxonomy**: do we want 3 top-level groups (BIM / Web / Custom) always visible, or a single grid with tags?
-2. **Language routing**: do we want `/es/...` and `/en/...` prefixes strictly (recommended), or language via query/cookie?
-3. **Card content**: confirm what appears on each card type (title/year/tag/1-liner) to define the design system.
+1. **Card hover timing**: confirm delay (~0–500ms) and animation specs (scale, easing) to keep it subtle.
+2. **Language routing**: confirm strict `/es/...` and `/en/...` prefixes (recommended).
+3. **Content codes**: confirm how project/service/case codes appear (badge on card? internal only?).
 
 ---
 
