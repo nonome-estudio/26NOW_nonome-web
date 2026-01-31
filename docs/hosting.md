@@ -36,3 +36,14 @@ Create a **CNAME**:
 - If we want `www → apex` redirect, we can either:
   - set canonical SEO + accept both hosts, or
   - add a small redirect page on the secondary host (if GitHub Pages doesn’t auto-redirect for our setup).
+
+## Pending task: Enforce HTTPS issue
+If GitHub Pages shows **"Enforce HTTPS unavailable"**:
+1. In Dinahosting DNS, ensure apex `@` has **only** the four GitHub Pages A records:
+   - 185.199.108.153
+   - 185.199.109.153
+   - 185.199.110.153
+   - 185.199.111.153
+   Remove any extra apex A records (e.g. `199.36.158.100`).
+2. Ensure the site has at least one successful deploy.
+3. Wait for certificate provisioning (can take hours).
