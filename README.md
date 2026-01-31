@@ -1,0 +1,34 @@
+# Nonome Web (26NOW_nonome-web)
+
+Public repository for the Nonome website.
+
+## Why is this repo public?
+This is a public-facing website. Keeping the repository public enables simple, low-cost hosting via GitHub Pages.
+
+> Note: Do not commit secrets. This project should not require any runtime secrets.
+
+## Tech
+- Astro (SSG)
+- TypeScript
+
+## Local development
+```bash
+npm install
+npm run dev
+```
+
+## Build
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment
+Deployed via **GitHub Pages**.
+
+## Content
+Project content lives in `src/content` (TBD as part of the implementation).
+
+## License
+- Code: MIT (TBD)
+- Content (images/text): Copyright © Nonome
