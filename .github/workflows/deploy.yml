@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - docs/project-initial-docs
   workflow_dispatch:
 
 permissions:

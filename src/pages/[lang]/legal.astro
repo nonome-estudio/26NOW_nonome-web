@@ -1,0 +1,49 @@
+---
+import type { Lang } from '../../lib/i18n/i18n';
+import { LANGS } from '../../lib/i18n/i18n';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+
+export async function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Legal · Nonome</title>
+  </head>
+  <body>
+    <Header lang={lang} />
+
+    <main class="main">
+      <h1>legal</h1>
+      <section>
+        <h2>legal notice</h2>
+        <p>Placeholder. To be finalized.</p>
+      </section>
+      <section>
+        <h2>privacy</h2>
+        <p>Placeholder. No tracking/analytics in v1.</p>
+      </section>
+      <section>
+        <h2>cookies</h2>
+        <p>Placeholder. No cookies required for core functionality in v1.</p>
+      </section>
+    </main>
+
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style>
+  body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+  .main{padding:32px 24px 0;max-width:920px;}
+  h1{margin:0 0 16px;font-size:18px;letter-spacing:.02em;text-transform:lowercase;}
+  h2{margin:28px 0 8px;font-size:14px;letter-spacing:.02em;text-transform:lowercase;}
+  p{margin:0;opacity:.75;line-height:1.6;}
+</style>
