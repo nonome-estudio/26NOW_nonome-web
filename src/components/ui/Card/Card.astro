@@ -7,15 +7,11 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
 
 <article class={styles.card} tabindex="0" role="button" aria-expanded="false" data-card>
   {imageSrc ? <img class={styles.img} src={imageSrc} alt={imageAlt ?? ''} loading="lazy" /> : null}
-  <div class={styles.inner}>
-    <div class={styles.title}>{title}</div>
-  </div>
 
-  {description ? (
-    <div class={styles.reveal}>
-      <div class={styles.desc}>{description}</div>
-    </div>
-  ) : null}
+  <div class={styles.body}>
+    <div class={styles.title}>{title}</div>
+    {description ? <div class={styles.desc}>{description}</div> : null}
+  </div>
 </article>
 
 <script>
@@ -46,7 +42,7 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
           el.classList.add('isOpen');
           el.setAttribute('aria-expanded', 'true');
         } else {
-          // v2: navigate to detail. For v1 we keep it selected.
+          // v2: navigate to detail. For v1 keep it selected.
           el.classList.add('isOpen');
           el.setAttribute('aria-expanded', 'true');
         }
