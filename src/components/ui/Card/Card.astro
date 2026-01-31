@@ -9,6 +9,11 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
   {imageSrc ? <img class={styles.img} src={imageSrc} alt={imageAlt ?? ''} loading="lazy" /> : null}
   <div class={styles.inner}>
     <div class={styles.title}>{title}</div>
-    {description ? <div class={styles.desc}>{description}</div> : null}
   </div>
+
+  {description ? (
+    <div class={styles.reveal}>
+      <div class={styles.desc}>{description}</div>
+    </div>
+  ) : null}
 </article>
