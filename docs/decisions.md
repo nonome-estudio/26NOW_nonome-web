@@ -6,8 +6,9 @@
 - **Decision**: Activate both **/architecture** and **/digital** in v1.
 - **Rationale**: Present the studio as architecture + digital from day one; keep symmetric IA.
 - **Impact**:
-  - v1 includes a cards gallery for both verticals.
-  - Detail pages for architecture projects and digital services/POCs come in v2.
+  - /architecture: single-page projects gallery.
+  - /digital: two single pages: **services** and **cases** (business-case style examples; mockups allowed in v1).
+  - Card hover animations in v1; clicking into details is deferred to v2.
 
 ## 2026-01-31 — Primary language is Spanish
 - **Decision**: ES is primary, EN secondary.
@@ -25,4 +26,8 @@
 
 ## 2026-01-31 — Visual direction: clean grid + subtle hover
 - **Decision**: Chipperfield-like cleanliness: strict grid, strong whitespace, minimal UI; subtle hover animations on cards.
-- **Rationale**: "Less is more" aligned with studio positioning.
+- **Rationale**: "Less is more" aligned with studio positioning (architecture + digital UX/process).
+
+## 2026-01-31 — v1 interaction: hover only
+- **Decision**: Cards have hover animations but **click is disabled in v1**.
+- **Rationale**: v1 focuses on positioning + browsing; detail pages arrive in v2.

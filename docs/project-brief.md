@@ -46,13 +46,11 @@ The site should allow users to self-select their interest area without confusion
 
 ```
 nonome.es (landing page)
- ├─ /architecture   (v1 – MVP)
- │   ├─ projects
- │   └─ project detail pages
- ├─ /digital        (v2 – future)
- │   ├─ solutions
- │   ├─ cases
- │   └─ approach
+ ├─ /architecture   (v1)
+ │   └─ projects (single page)
+ ├─ /digital        (v1)
+ │   ├─ services (single page)
+ │   └─ cases (single page; business-case style, mockups in v1)
  └─ /legal          (studio level - cookies, compliance)
 ```
 
@@ -76,16 +74,19 @@ nonome.es (landing page)
 **MVP Features (v1)**:
 
 1. Landing page with navigation to /architecture and /digital
-2. **Architecture**: project gallery (cards)
-3. **Digital**: services/POCs gallery (cards; mockups allowed)
-4. Header with section navigation and logo (returns to landing)
-5. Footer with inline contact information
-6. Legal page (cookies, compliance)
-7. Full bilingual support (Spanish primary / English secondary)
-8. Fully responsive design optimized for visual portfolios
+2. **Architecture**: projects gallery (single page)
+3. **Digital**:
+   - **Services** page (consulting services)
+   - **Cases** page (business-case style examples; mockups allowed)
+4. Card-based UI with **hover animations** (click disabled in v1)
+5. Header with section navigation and logo (returns to landing)
+6. Footer with inline contact information
+7. Legal page (cookies, compliance)
+8. Full bilingual support (Spanish primary / English secondary)
+9. Fully responsive design optimized for visual portfolios
 
 **Out of Scope (v1)**: 
-- Detail pages for both verticals (architecture project detail; digital service/POC detail) → planned for v2
+- Clicking a card to open detail pages (architecture project detail; digital service/case detail) → planned for v2
 - 3D model viewers or interactive visualizations
 - Blog, news, or editorial content
 - User authentication or client areas
