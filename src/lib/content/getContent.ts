@@ -13,7 +13,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'Short placeholder description. Replace with real content.'
         },
         image: {
-          src: '/placeholder/architecture-01.jpg',
+          src: '/placeholder/card.svg',
           alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' }
         }
       }
@@ -32,7 +32,8 @@ export function getDigitalServices(): CardItem[] {
         description: {
           es: 'Procesos, documentación, análisis y acompañamiento.',
           en: 'Processes, documentation, analysis, and advisory.'
-        }
+        },
+        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
       }
     },
     {
@@ -44,7 +45,8 @@ export function getDigitalServices(): CardItem[] {
         description: {
           es: 'Apps, modelos y herramientas enfocadas a experiencia de usuario.',
           en: 'Apps, models, and tools focused on clean user experience.'
-        }
+        },
+        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
       }
     },
     {
@@ -56,7 +58,8 @@ export function getDigitalServices(): CardItem[] {
         description: {
           es: 'Revit, Navisworks, CAD, Civil 3D… automatización y plugins.',
           en: 'Revit, Navisworks, CAD, Civil 3D… automation and plugins.'
-        }
+        },
+        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
       }
     }
   ];
@@ -73,7 +76,8 @@ export function getDigitalCases(): CardItem[] {
         description: {
           es: 'Ejemplo de caso con enfoque en impacto/beneficio.',
           en: 'Example case framed around outcome/benefit.'
-        }
+        },
+        image: { src: '/placeholder/card.svg', alt: { es: 'Imagen de ejemplo', en: 'Placeholder image' } }
       }
     }
   ];

@@ -1,4 +1,4 @@
-.card{position:relative;border:1px solid rgba(0,0,0,.10);background:#fff;overflow:hidden;transition:transform 220ms ease, box-shadow 220ms ease;}
+.card{position:relative;border:1px solid rgba(0,0,0,.10);background:#fff;overflow:hidden;transform-origin:center;transition:transform 220ms ease, box-shadow 220ms ease;}
 .card:hover,.card:focus-within{transform:scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.08);}
 .inner{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:140px;}
 .title{font-size:14px;letter-spacing:.02em;text-transform:lowercase;opacity:.9;}

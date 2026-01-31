@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#f2f2f2"/>
+  <rect x="80" y="80" width="1040" height="740" fill="none" stroke="#cfcfcf" stroke-width="2"/>
+  <text x="100" y="140" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="28" fill="#777">nonome</text>
+  <text x="100" y="185" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="16" fill="#999">placeholder image</text>
+</svg>
