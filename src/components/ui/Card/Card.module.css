@@ -1,13 +1,13 @@
 .card{position:relative;border:1px solid rgba(0,0,0,.10);background:#fff;overflow:hidden;transform-origin:center;transition:transform 220ms ease, box-shadow 220ms ease;}
 .card:focus-within{transform:scale(1.01);box-shadow:0 12px 30px rgba(0,0,0,.08);z-index:5;}
 
-.inner{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:140px;}
+.inner{padding:14px 18px;display:flex;flex-direction:column;gap:10px;min-height:64px;}
 .title{font-size:14px;letter-spacing:.02em;text-transform:lowercase;opacity:.9;}
 
-/* Touch/mobile: description is hidden by default and expands on first tap (isOpen). */
-.reveal{padding:0 18px;max-height:0;overflow:hidden;opacity:0;transform:translateY(6px);transition:max-height 220ms ease, opacity 180ms ease, transform 180ms ease;}
-.desc{padding:0 0 18px;font-size:13px;line-height:1.4;max-height:2.8em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
-.card.isOpen .reveal{max-height:72px;opacity:.75;transform:translateY(0);} 
+/* Touch/mobile: compact by default. Expand DOWN to show description on first tap (isOpen). */
+.reveal{padding:0 18px;max-height:0;overflow:hidden;opacity:0;transform:translateY(6px);transition:max-height 240ms ease, opacity 180ms ease, transform 180ms ease, padding-bottom 240ms ease;}
+.desc{padding:0;font-size:13px;line-height:1.4;max-height:2.8em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.card.isOpen .reveal{max-height:80px;opacity:.75;transform:translateY(0);padding-bottom:16px;} 
 
 /* Hover-capable devices: description "extends" into reserved space.
    (Grid item reserves the space; card reveals into it without reflow.) */

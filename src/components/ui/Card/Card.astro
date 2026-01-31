@@ -52,6 +52,16 @@ const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
         }
       }, { passive: false });
 
+      // Tap outside closes.
+      document.addEventListener('click', (evt) => {
+        const t = evt.target;
+        if (!(t instanceof Node)) return;
+        if (!el.contains(t)) {
+          el.classList.remove('isOpen');
+          el.setAttribute('aria-expanded', 'false');
+        }
+      });
+
       // Keyboard: Enter/Space toggles open state.
       el.addEventListener('keydown', (e) => {
         if (e.key !== 'Enter' && e.key !== ' ') return;
