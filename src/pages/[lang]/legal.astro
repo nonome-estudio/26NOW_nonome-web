@@ -59,31 +59,26 @@ const t = {
 <Layout lang={lang} title={t.title}>
   <Header lang={lang} />
 
-  <main class="main">
-    <h1>{t.h1}</h1>
+  <main class="pageMain pageMain--top">
+    <div class="container--wide">
+      <h1 class="pageTitle">{t.h1}</h1>
 
-    <section>
-      <h2>{t.noticeTitle}</h2>
-      {t.notice.map((line) => <p>{line}</p>)}
-    </section>
+      <section>
+        <h2 class="sectionTitle">{t.noticeTitle}</h2>
+        {t.notice.map((line) => <p class="bodyText">{line}</p>)}
+      </section>
 
-    <section>
-      <h2>{t.privacyTitle}</h2>
-      {t.privacy.map((line) => <p>{line}</p>)}
-    </section>
+      <section>
+        <h2 class="sectionTitle">{t.privacyTitle}</h2>
+        {t.privacy.map((line) => <p class="bodyText">{line}</p>)}
+      </section>
 
-    <section>
-      <h2>{t.cookiesTitle}</h2>
-      {t.cookies.map((line) => <p>{line}</p>)}
-    </section>
+      <section>
+        <h2 class="sectionTitle">{t.cookiesTitle}</h2>
+        {t.cookies.map((line) => <p class="bodyText">{line}</p>)}
+      </section>
+    </div>
   </main>
 
   <Footer lang={lang} />
 </Layout>
-
-<style>
-  .main{padding:32px 24px 0;max-width:920px;}
-  h1{margin:0 0 16px;font-size:18px;letter-spacing:.02em;text-transform:lowercase;}
-  h2{margin:28px 0 8px;font-size:14px;letter-spacing:.02em;text-transform:lowercase;}
-  p{margin:0;opacity:.75;line-height:1.6;}
-</style>

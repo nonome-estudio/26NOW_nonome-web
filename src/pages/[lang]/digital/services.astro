@@ -30,15 +30,13 @@ const items = entries
 <Layout lang={lang} title="Digital Services · Nonome">
   <Header lang={lang} />
 
-  <main class="main">
-    <h1>digital · services</h1>
+  <main class="pageMain pageMain--top">
+    <div class="container">
+      <h1 class="pageTitle">digital · services</h1>
+    </div>
+
     <CardGrid items={items} />
   </main>
 
   <Footer lang={lang} />
 </Layout>
-
-<style>
-  .main{padding:32px 0 0;}
-  h1{padding:0 24px;margin:0 0 10px;font-size:18px;letter-spacing:.02em;text-transform:lowercase;}
-</style>

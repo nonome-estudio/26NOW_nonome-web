@@ -21,3 +21,26 @@ html, body {
 a { color: inherit; }
 
 img, video { max-width: 100%; }
+
+/* Small shared utilities */
+.container { max-width: 960px; margin: 0 auto; }
+.container--wide { max-width: 920px; margin: 0 auto; }
+
+.pageMain { padding: 32px 24px 48px; }
+.pageMain--top { padding-bottom: 0; }
+
+.pageTitle {
+  margin: 0 0 10px;
+  font-size: 18px;
+  letter-spacing: .02em;
+  text-transform: lowercase;
+}
+
+.sectionTitle {
+  margin: 28px 0 8px;
+  font-size: 14px;
+  letter-spacing: .02em;
+  text-transform: lowercase;
+}
+
+.bodyText { margin: 0; opacity: .75; line-height: 1.6; }
