@@ -11,5 +11,7 @@ description:
   en: |-
     Functional infrastructure solved with precision and economy.
     Clear constructive logic for efficient use.
-image: /images/projects/terras-almacen.png
+image: /images/projects/terras-almacen.webp
+imageWidth: 1600
+imageHeight: 800
 ---

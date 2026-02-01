@@ -11,5 +11,7 @@ description:
   en: |-
     Work and meeting spaces organized with clarity.
     Natural light and simple circulation to support collaboration.
-image: /images/projects/centro-innovacion.png
+image: /images/projects/centro-innovacion.webp
+imageWidth: 1740
+imageHeight: 1152
 ---

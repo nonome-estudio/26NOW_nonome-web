@@ -11,5 +11,7 @@ description:
   en: |-
     A contemporary re-reading rooted in respect for heritage.
     Balance between memory, use, and present-day comfort.
-image: /images/projects/pazo-toubes.png
+image: /images/projects/pazo-toubes.webp
+imageWidth: 1200
+imageHeight: 600
 ---

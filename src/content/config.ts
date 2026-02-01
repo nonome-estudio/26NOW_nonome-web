@@ -10,7 +10,9 @@ const baseCardSchema = z.object({
   order: z.number().int(),
   title: localizedText,
   description: localizedText,
-  image: z.string()
+  image: z.string(),
+  imageWidth: z.number().int().optional(),
+  imageHeight: z.number().int().optional()
 });
 
 export const collections = {
