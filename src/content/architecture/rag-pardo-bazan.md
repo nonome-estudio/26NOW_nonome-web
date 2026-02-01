@@ -11,5 +11,5 @@ description:
   en: |-
     Institutional architecture: order, proportion, and quietness.
     A clear presence that supports the public realm.
-image: /images/projects/rag-pardo-bazan.png
+image: /images/projects/rag-pardo-bazan.webp
 ---

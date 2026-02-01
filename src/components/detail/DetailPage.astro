@@ -3,6 +3,7 @@ import type { Lang } from '../../lib/i18n/i18n';
 import { fallbackText } from '../../lib/i18n/i18n';
 import type { CollectionEntry } from 'astro:content';
 
+import Layout from '../../layouts/Layout.astro';
 import Header from '../layout/Header.astro';
 import Footer from '../layout/Footer.astro';
 import ObjectInformation from './ObjectInformation.astro';
@@ -39,50 +40,43 @@ const rendered = await entry.render();
 const Content = rendered.Content;
 ---
 
-<html lang={lang}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}{pageTitleSuffix ? ` · ${pageTitleSuffix}` : ''} · Nonome</title>
-  </head>
-  <body>
-    <Header lang={lang} />
+<Layout
+  lang={lang}
+  title={`${title}${pageTitleSuffix ? ` · ${pageTitleSuffix}` : ''} · Nonome`}
+>
+  <Header lang={lang} />
 
-    <main class="main">
-      <nav class="breadcrumbs">
-        <a class="back" href={backHref}>← {backLabel}</a>
-      </nav>
+  <main class="main">
+    <nav class="breadcrumbs">
+      <a class="back" href={backHref}>← {backLabel}</a>
+    </nav>
 
-      <header class="hero">
-        <h1 class="title">{title}</h1>
-        {description ? <p class="desc">{description}</p> : null}
-      </header>
+    <header class="hero">
+      <h1 class="title">{title}</h1>
+      {description ? <p class="desc">{description}</p> : null}
+    </header>
 
-      {imageSrc ? (
-        <figure class="figure">
-          <img class="img" src={imageSrc} alt={title} loading="eager" />
-        </figure>
-      ) : null}
+    {imageSrc ? (
+      <figure class="figure">
+        <img class="img" src={imageSrc} alt={title} loading="eager" />
+      </figure>
+    ) : null}
 
-      <ObjectInformation lang={lang} collection={collection} data={data as any} />
+    <ObjectInformation lang={lang} collection={collection} data={data as any} />
 
-      <ContentBlocks lang={lang} blocks={(data as any).content} Content={Content} />
+    <ContentBlocks lang={lang} blocks={(data as any).content} Content={Content} />
 
-      <section class="meta" aria-label="Internal">
-        <div class="metaRow"><span class="k">ID</span><span class="v">{(data as any).id}</span></div>
-        <div class="metaRow"><span class="k">Slug</span><span class="v">{entry.slug}</span></div>
-        <div class="metaRow"><span class="k">Collection</span><span class="v">{collection}</span></div>
-      </section>
-    </main>
+    <section class="meta" aria-label="Internal">
+      <div class="metaRow"><span class="k">ID</span><span class="v">{(data as any).id}</span></div>
+      <div class="metaRow"><span class="k">Slug</span><span class="v">{entry.slug}</span></div>
+      <div class="metaRow"><span class="k">Collection</span><span class="v">{collection}</span></div>
+    </section>
+  </main>
 
-    <Footer lang={lang} />
-  </body>
-</html>
+  <Footer lang={lang} />
+</Layout>
 
 <style>
-  html,body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden;}
-  *{box-sizing:border-box;}
   .main{padding:32px 24px 48px;max-width:960px;margin:0 auto;}
   .breadcrumbs{margin:0 0 18px;}
   .back{display:inline-block;text-decoration:none;color:inherit;opacity:.75;}

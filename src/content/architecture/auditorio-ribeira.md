@@ -11,7 +11,7 @@ description:
   en: |-
     Urban cultural venue with a sober, luminous presence.
     A flexible interior for music, events, and civic life.
-image: /images/projects/auditorio-ribeira.png
+image: /images/projects/auditorio-ribeira.webp
 
 tags: ["cultural", "public", "galicia"]
 year: 2021
