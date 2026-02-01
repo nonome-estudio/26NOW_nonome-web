@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../../lib/i18n/i18n';
 import { fallbackText } from '../../lib/i18n/i18n';
+import { marked } from 'marked';
 
 type LocalizedText = { es: string; en?: string };
 
@@ -14,6 +15,12 @@ const { lang, blocks, Content } = Astro.props as {
   blocks?: ContentBlock[];
   Content?: any;
 };
+
+function renderMarkdown(md: string) {
+  // Minimal markdown support for authored content blocks.
+  // Note: this does not sanitize HTML. Keep authored markdown trusted.
+  return marked.parse(md ?? '', { breaks: true }) as string;
+}
 ---
 
 <section class="content" aria-label="Content">
@@ -21,13 +28,7 @@ const { lang, blocks, Content } = Astro.props as {
     <div class="blocks">
       {blocks.map((b) => {
         if (b.type === 'text') {
-          // Keep it simple for now: show the markdown as plain text.
-          // (We can add a proper markdown renderer later.)
-          return (
-            <div class="block text">
-              <pre class="pre">{b.markdown}</pre>
-            </div>
-          );
+          return <div class="block text" set:html={renderMarkdown(b.markdown)} />;
         }
 
         if (b.type === 'image') {
@@ -67,5 +68,10 @@ const { lang, blocks, Content } = Astro.props as {
   .caption{margin:8px 2px 0;opacity:.7;font-size:12px;}
   .markdown{opacity:.92;line-height:1.55;}
   .text{opacity:.92;line-height:1.55;}
-  .pre{margin:0;white-space:pre-wrap;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+  .text :global(p){margin:0 0 10px;}
+  .text :global(p:last-child){margin-bottom:0;}
+  .text :global(ul),.text :global(ol){margin:0 0 10px 18px;}
+  .text :global(h2),.text :global(h3){margin:12px 0 8px;font-size:14px;letter-spacing:.02em;text-transform:lowercase;}
+  .text :global(code){background:rgba(0,0,0,.06);padding:2px 4px;border-radius:4px;}
+  .text :global(pre){background:rgba(0,0,0,.06);padding:10px 12px;border-radius:10px;overflow:auto;}
 </style>
