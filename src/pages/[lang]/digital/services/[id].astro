@@ -25,6 +25,6 @@ if (!entry) throw new Error(`Service entry not found: ${id}`);
   collection="services"
   entry={entry}
   backHref={`/${lang}/digital/services`}
-  backLabel="Back to digital · services"
-  pageTitleSuffix="Digital services"
+  backLabel={lang === 'es' ? 'Volver a digital · servicios' : 'Back to digital · services'}
+  pageTitleSuffix={lang === 'es' ? 'Digital servicios' : 'Digital services'}
 />

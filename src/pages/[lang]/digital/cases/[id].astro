@@ -25,6 +25,6 @@ if (!entry) throw new Error(`Case entry not found: ${id}`);
   collection="cases"
   entry={entry}
   backHref={`/${lang}/digital/cases`}
-  backLabel="Back to digital · cases"
-  pageTitleSuffix="Digital cases"
+  backLabel={lang === 'es' ? 'Volver a digital · casos' : 'Back to digital · cases'}
+  pageTitleSuffix={lang === 'es' ? 'Digital casos' : 'Digital cases'}
 />

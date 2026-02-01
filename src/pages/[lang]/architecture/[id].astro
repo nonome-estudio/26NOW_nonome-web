@@ -25,6 +25,6 @@ if (!entry) throw new Error(`Architecture entry not found: ${id}`);
   collection="architecture"
   entry={entry}
   backHref={`/${lang}/architecture`}
-  backLabel="Back to architecture"
-  pageTitleSuffix="Architecture"
+  backLabel={lang === 'es' ? 'Volver a arquitectura' : 'Back to architecture'}
+  pageTitleSuffix={lang === 'es' ? 'Arquitectura' : 'Architecture'}
 />
