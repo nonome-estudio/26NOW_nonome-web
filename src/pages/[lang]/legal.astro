@@ -9,30 +9,77 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Lang };
+const isEs = lang === 'es';
+
+const t = {
+  title: isEs ? 'Legal · Nonome' : 'Legal · Nonome',
+  h1: isEs ? 'legal' : 'legal',
+  noticeTitle: isEs ? 'aviso legal' : 'legal notice',
+  privacyTitle: isEs ? 'privacidad' : 'privacy',
+  cookiesTitle: isEs ? 'cookies' : 'cookies',
+  notice: isEs
+    ? [
+        'Titular: Nonome (Jorge Fernandez Alonso).',
+        'Domicilio: Calle Ancha, 26 · 24401 Ponferrada (León), España.',
+        'Email de contacto: info@nonome.es.',
+        'Este sitio es informativo y no constituye asesoramiento profesional. El contenido puede cambiar sin previo aviso.',
+        'Si detectas un error o quieres solicitar retirada/corrección de contenido, escríbenos y lo revisamos.'
+      ]
+    : [
+        'Owner: Nonome (Jorge Fernandez Alonso).',
+        'Address: Calle Ancha, 26 · 24401 Ponferrada (León), Spain.',
+        'Contact email: info@nonome.es.',
+        'This website is informational and does not constitute professional advice. Content may change without notice.',
+        'If you spot an error or want to request removal/correction of content, contact us and we will review it.'
+      ],
+  privacy: isEs
+    ? [
+        'Este sitio no utiliza analítica ni seguimiento (tracking) en v1.',
+        'Si nos contactas por email, usaremos tus datos únicamente para responder y gestionar la comunicación.',
+        'Puedes solicitar acceso, rectificación o eliminación escribiendo a info@nonome.es.'
+      ]
+    : [
+        'This site does not use analytics or tracking in v1.',
+        'If you contact us by email, we will use your data only to reply and manage the conversation.',
+        'You can request access, correction, or deletion by writing to info@nonome.es.'
+      ],
+  cookies: isEs
+    ? [
+        'Este sitio no requiere cookies para su funcionamiento básico.',
+        'Algunos recursos (por ejemplo, GitHub Pages/tu navegador) pueden establecer cookies técnicas propias. No controlamos cookies de terceros fuera de este dominio.'
+      ]
+    : [
+        'This site does not require cookies for core functionality.',
+        'Some resources (e.g., GitHub Pages/your browser) may set their own technical cookies. We do not control third-party cookies outside this domain.'
+      ]
+};
 ---
 
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Legal · Nonome</title>
+    <title>{t.title}</title>
   </head>
   <body>
     <Header lang={lang} />
 
     <main class="main">
-      <h1>legal</h1>
+      <h1>{t.h1}</h1>
+
       <section>
-        <h2>legal notice</h2>
-        <p>Placeholder. To be finalized.</p>
+        <h2>{t.noticeTitle}</h2>
+        {t.notice.map((line) => <p>{line}</p>)}
       </section>
+
       <section>
-        <h2>privacy</h2>
-        <p>Placeholder. No tracking/analytics in v1.</p>
+        <h2>{t.privacyTitle}</h2>
+        {t.privacy.map((line) => <p>{line}</p>)}
       </section>
+
       <section>
-        <h2>cookies</h2>
-        <p>Placeholder. No cookies required for core functionality in v1.</p>
+        <h2>{t.cookiesTitle}</h2>
+        {t.cookies.map((line) => <p>{line}</p>)}
       </section>
     </main>
 
