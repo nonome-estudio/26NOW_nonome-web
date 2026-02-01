@@ -2,14 +2,19 @@
 import styles from './Card.module.css';
 import type { CardProps } from './Card.types';
 
-const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
+const { title, description, imageSrc, imageAlt, href } = Astro.props as CardProps;
+
+const Tag = href ? 'a' : 'article';
+const interactiveProps = href
+  ? { href }
+  : { tabindex: '0', role: 'button', 'aria-expanded': 'false' };
 ---
 
-<article class={styles.card} tabindex="0" role="button" aria-expanded="false" data-card data-open="false">
+<Tag class={styles.card} {...interactiveProps} data-card data-open="false">
   {imageSrc ? <img class={styles.img} src={imageSrc} alt={imageAlt ?? ''} loading="lazy" /> : null}
 
   <div class={styles.body}>
     <div class={styles.title}>{title}</div>
     {description ? <div class={styles.desc}>{description}</div> : null}
   </div>
-</article>
+</Tag>

@@ -49,7 +49,10 @@ const { items } = Astro.props as CardGridProps;
 
         const card = t.closest(selector);
         if (card) {
-          // v1: no navigation, so a click becomes a "select/expand" interaction.
+          // If the card is a link (<a>), let the browser navigate.
+          if (card.tagName === 'A' && card.getAttribute('href')) return;
+
+          // Otherwise, a click becomes a "select/expand" interaction.
           e.preventDefault();
 
           const isOpen = card.getAttribute('data-open') === 'true';
@@ -57,7 +60,6 @@ const { items } = Astro.props as CardGridProps;
             closeAll(card);
             setOpen(card, true);
           } else {
-            // v2: navigate to detail. For v1 keep it selected.
             setOpen(card, true);
           }
           return;

@@ -3,6 +3,5 @@ export type CardProps = {
   description?: string;
   imageSrc?: string;
   imageAlt?: string;
-  // v1 hover-only
-  href?: never;
+  href?: string;
 };
