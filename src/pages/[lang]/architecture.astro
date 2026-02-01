@@ -1,7 +1,7 @@
 ---
 import type { Lang } from '../../lib/i18n/i18n';
 import { LANGS } from '../../lib/i18n/i18n';
-import { getArchitectureProjects } from '../../lib/content/getContent';
+import { getCollection } from 'astro:content';
 import { fallbackText } from '../../lib/i18n/i18n';
 
 import Header from '../../components/layout/Header.astro';
@@ -13,13 +13,16 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Lang };
-const data = getArchitectureProjects();
-const items = data.map(({ item }) => ({
-  title: fallbackText(item.title, lang),
-  description: item.description ? fallbackText(item.description, lang) : undefined,
-  imageSrc: item.image?.src,
-  imageAlt: item.image ? fallbackText(item.image.alt, lang) : undefined
-}));
+
+const entries = await getCollection('architecture');
+const items = entries
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ data }) => ({
+    title: fallbackText(data.title, lang),
+    description: fallbackText(data.description, lang),
+    imageSrc: data.image,
+    imageAlt: fallbackText(data.title, lang)
+  }));
 ---
 
 <html lang={lang}>
