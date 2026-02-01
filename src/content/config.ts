@@ -16,10 +16,26 @@ const contentBlockSchema = z.discriminatedUnion('type', [
     alt: z.string().optional(),
     caption: localizedText.optional()
   }),
+  // Self-hosted video (e.g. /public/videos/*.mp4)
   z.object({
     type: z.literal('video'),
     src: z.string(),
     poster: z.string().optional(),
+    caption: localizedText.optional()
+  }),
+  // Embedded video (YouTube/Vimeo/other iframe)
+  z.object({
+    type: z.literal('embed'),
+    url: z.string(),
+    provider: z.enum(['youtube', 'vimeo', 'generic']).optional(),
+    title: z.string().optional(),
+    caption: localizedText.optional()
+  }),
+  // Future: custom interactive blocks (IFC viewer, Three.js, etc.)
+  z.object({
+    type: z.literal('widget'),
+    name: z.enum(['ifcViewer', 'threejs', 'iframe']),
+    props: z.record(z.unknown()).optional(),
     caption: localizedText.optional()
   })
 ]);

@@ -8,7 +8,9 @@ type LocalizedText = { es: string; en?: string };
 type TextBlock = { type: 'text'; markdown: string };
 type ImageBlock = { type: 'image'; src: string; alt?: string; caption?: LocalizedText };
 type VideoBlock = { type: 'video'; src: string; poster?: string; caption?: LocalizedText };
-export type ContentBlock = TextBlock | ImageBlock | VideoBlock;
+type EmbedBlock = { type: 'embed'; url: string; provider?: 'youtube' | 'vimeo' | 'generic'; title?: string; caption?: LocalizedText };
+type WidgetBlock = { type: 'widget'; name: 'ifcViewer' | 'threejs' | 'iframe'; props?: Record<string, any>; caption?: LocalizedText };
+export type ContentBlock = TextBlock | ImageBlock | VideoBlock | EmbedBlock | WidgetBlock;
 
 const { lang, blocks, Content } = Astro.props as {
   lang: Lang;
@@ -20,6 +22,34 @@ function renderMarkdown(md: string) {
   // Minimal markdown support for authored content blocks.
   // Note: this does not sanitize HTML. Keep authored markdown trusted.
   return marked.parse(md ?? '', { breaks: true }) as string;
+}
+
+function toEmbedSrc(url: string, provider?: 'youtube' | 'vimeo' | 'generic') {
+  const u = (url ?? '').trim();
+  if (!u) return '';
+
+  if (provider === 'youtube' || u.includes('youtube.com') || u.includes('youtu.be')) {
+    // Accept watch URLs and youtu.be short URLs
+    try {
+      if (u.includes('youtu.be/')) {
+        const id = u.split('youtu.be/')[1]?.split(/[?&#]/)[0];
+        return id ? `https://www.youtube.com/embed/${id}` : u;
+      }
+      const parsed = new URL(u);
+      const id = parsed.searchParams.get('v');
+      return id ? `https://www.youtube.com/embed/${id}` : u;
+    } catch {
+      return u;
+    }
+  }
+
+  if (provider === 'vimeo' || u.includes('vimeo.com')) {
+    // Accept vimeo.com/<id>
+    const m = u.match(/vimeo\.com\/(\d+)/);
+    if (m?.[1]) return `https://player.vimeo.com/video/${m[1]}`;
+  }
+
+  return u;
 }
 ---
 
@@ -41,13 +71,47 @@ function renderMarkdown(md: string) {
           );
         }
 
-        // video
+        if (b.type === 'video') {
+          const caption = b.caption ? fallbackText(b.caption, lang) : undefined;
+          return (
+            <figure class="block video">
+              <video class="videoEl" controls playsinline poster={b.poster}>
+                <source src={b.src} />
+              </video>
+              {caption ? <figcaption class="caption">{caption}</figcaption> : null}
+            </figure>
+          );
+        }
+
+        if (b.type === 'embed') {
+          const src = toEmbedSrc(b.url, b.provider);
+          const caption = b.caption ? fallbackText(b.caption, lang) : undefined;
+          return (
+            <figure class="block embed">
+              <div class="embedWrap">
+                <iframe
+                  class="iframe"
+                  src={src}
+                  title={b.title ?? 'Embedded media'}
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                />
+              </div>
+              {caption ? <figcaption class="caption">{caption}</figcaption> : null}
+            </figure>
+          );
+        }
+
+        // widget (placeholder for future interactive components)
         const caption = b.caption ? fallbackText(b.caption, lang) : undefined;
         return (
-          <figure class="block video">
-            <video class="videoEl" controls playsinline poster={b.poster}>
-              <source src={b.src} />
-            </video>
+          <figure class="block widget">
+            <div class="widgetBox">
+              <div class="widgetTitle">Widget: {b.name}</div>
+              <pre class="widgetProps">{JSON.stringify(b.props ?? {}, null, 2)}</pre>
+            </div>
             {caption ? <figcaption class="caption">{caption}</figcaption> : null}
           </figure>
         );
@@ -65,6 +129,11 @@ function renderMarkdown(md: string) {
   .blocks{display:flex;flex-direction:column;gap:14px;}
   .block{margin:0;}
   .img,.videoEl{width:100%;height:auto;display:block;border-radius:10px;}
+  .embedWrap{position:relative;width:100%;aspect-ratio:16/9;background:rgba(0,0,0,.06);border-radius:10px;overflow:hidden;}
+  .iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .widgetBox{border:1px dashed rgba(0,0,0,.25);border-radius:10px;padding:12px 14px;background:rgba(0,0,0,.03);}
+  .widgetTitle{opacity:.7;font-size:12px;margin:0 0 8px;}
+  .widgetProps{margin:0;white-space:pre-wrap;opacity:.8;font-size:12px;}
   .caption{margin:8px 2px 0;opacity:.7;font-size:12px;}
   .markdown{opacity:.92;line-height:1.55;}
   .text{opacity:.92;line-height:1.55;}

@@ -27,7 +27,18 @@ npm run preview
 Deployed via **GitHub Pages**.
 
 ## Content
-Project content lives in `src/content` (TBD as part of the implementation).
+Project content lives in `src/content`.
+
+Each entry supports:
+- `tags: string[]`
+- `content?: ContentBlock[]` blocks (optional)
+
+`ContentBlock` currently supports:
+- `text` (markdown string)
+- `image` (src/alt + optional localized caption)
+- `video` (self-hosted src + optional poster/caption)
+- `embed` (YouTube/Vimeo/generic iframe via URL)
+- `widget` (future interactive blocks: IFC viewer / Three.js / iframe; currently a placeholder renderer)
 
 ## License
 - Code: MIT (TBD)
