@@ -1,0 +1,87 @@
+---
+import type { Lang } from '../../../../lib/i18n/i18n';
+import { LANGS, fallbackText } from '../../../../lib/i18n/i18n';
+import { getCollection, getEntryBySlug } from 'astro:content';
+
+import Header from '../../../../components/layout/Header.astro';
+import Footer from '../../../../components/layout/Footer.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('services');
+  return LANGS.flatMap((lang) =>
+    entries.map((entry) => ({
+      params: { lang, id: entry.slug }
+    }))
+  );
+}
+
+const { lang, id } = Astro.params as { lang: Lang; id: string };
+
+const entry = await getEntryBySlug('services', id);
+if (!entry) throw new Error(`Service entry not found: ${id}`);
+
+const { data } = entry;
+const title = fallbackText(data.title, lang);
+const description = fallbackText(data.description, lang);
+const imageSrc = data.image;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Digital Services · Nonome</title>
+  </head>
+  <body>
+    <Header lang={lang} />
+
+    <main class="main">
+      <nav class="breadcrumbs">
+        <a class="back" href={`/${lang}/digital/services`}>← Back to digital · services</a>
+      </nav>
+
+      <header class="hero">
+        <h1 class="title">{title}</h1>
+        {description ? <p class="desc">{description}</p> : null}
+      </header>
+
+      {imageSrc ? (
+        <figure class="figure">
+          <img class="img" src={imageSrc} alt={title} loading="eager" />
+        </figure>
+      ) : null}
+
+      <section class="meta" aria-label="Metadata">
+        <div class="metaRow"><span class="k">Year</span><span class="v">—</span></div>
+        <div class="metaRow"><span class="k">Tags</span><span class="v">—</span></div>
+        <div class="metaRow"><span class="k">Links</span><span class="v">—</span></div>
+      </section>
+
+      <section class="meta" aria-label="Internal">
+        <div class="metaRow"><span class="k">ID</span><span class="v">{data.id}</span></div>
+        <div class="metaRow"><span class="k">Slug</span><span class="v">{id}</span></div>
+      </section>
+    </main>
+
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style>
+  html,body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden;}
+  *{box-sizing:border-box;}
+  .main{padding:32px 24px 48px;max-width:960px;margin:0 auto;}
+  .breadcrumbs{margin:0 0 18px;}
+  .back{display:inline-block;text-decoration:none;color:inherit;opacity:.75;}
+  .back:hover{opacity:1;text-decoration:underline;}
+  .hero{margin:0 0 18px;}
+  .title{margin:0 0 10px;font-size:18px;letter-spacing:.02em;text-transform:lowercase;}
+  .desc{margin:0;opacity:.75;white-space:pre-line;}
+  .figure{margin:18px 0 22px;}
+  .img{width:100%;height:auto;display:block;border-radius:10px;}
+  .meta{margin:16px 0 0;border:1px solid rgba(0,0,0,.1);border-radius:10px;padding:12px 14px;}
+  .metaRow{display:flex;gap:12px;justify-content:space-between;padding:6px 0;border-top:1px solid rgba(0,0,0,.06);}
+  .metaRow:first-child{border-top:none;}
+  .k{opacity:.6;}
+  .v{opacity:.85;text-align:right;}
+</style>
