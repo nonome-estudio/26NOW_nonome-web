@@ -15,7 +15,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'Urban cultural venue with a sober, luminous presence.\nA flexible interior for music, events, and civic life.'
         },
         image: {
-          src: '/images/projects/auditorio-ribeira.png',
+          src: '/images/projects/auditorio-ribeira.webp',
           alt: { es: 'Auditorio Ribeira', en: 'Ribeira Auditorium' }
         }
       }
@@ -31,7 +31,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'Work and meeting spaces organized with clarity.\nNatural light and simple circulation to support collaboration.'
         },
         image: {
-          src: '/images/projects/centro-innovacion.png',
+          src: '/images/projects/centro-innovacion.webp',
           alt: { es: 'Centro de Innovación', en: 'Innovation Center' }
         }
       }
@@ -47,7 +47,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'A sensitive intervention in a place with strong identity.\nRestrained volumes and calm materiality, without noise.'
         },
         image: {
-          src: '/images/projects/o-castro.png',
+          src: '/images/projects/o-castro.webp',
           alt: { es: 'O Castro', en: 'O Castro' }
         }
       }
@@ -63,7 +63,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'A contemporary re-reading rooted in respect for heritage.\nBalance between memory, use, and present-day comfort.'
         },
         image: {
-          src: '/images/projects/pazo-toubes.png',
+          src: '/images/projects/pazo-toubes.webp',
           alt: { es: 'Pazo Toubes', en: 'Pazo Toubes' }
         }
       }
@@ -79,7 +79,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'Institutional architecture: order, proportion, and quietness.\nA clear presence that supports the public realm.'
         },
         image: {
-          src: '/images/projects/rag-pardo-bazan.png',
+          src: '/images/projects/rag-pardo-bazan.webp',
           alt: { es: 'RAG Pardo Bazán', en: 'RAG Pardo Bazán' }
         }
       }
@@ -95,7 +95,7 @@ export function getArchitectureProjects(): CardItem[] {
           en: 'Functional infrastructure solved with precision and economy.\nClear constructive logic for efficient use.'
         },
         image: {
-          src: '/images/projects/terras-almacen.png',
+          src: '/images/projects/terras-almacen.webp',
           alt: { es: 'Terras Almacén', en: 'Terras Warehouse' }
         }
       }

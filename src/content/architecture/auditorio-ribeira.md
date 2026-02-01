@@ -11,5 +11,7 @@ description:
   en: |-
     Urban cultural venue with a sober, luminous presence.
     A flexible interior for music, events, and civic life.
-image: /images/projects/auditorio-ribeira.png
+image: /images/projects/auditorio-ribeira.webp
+imageWidth: 1494
+imageHeight: 1033
 ---

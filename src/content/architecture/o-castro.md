@@ -11,5 +11,7 @@ description:
   en: |-
     A sensitive intervention in a place with strong identity.
     Restrained volumes and calm materiality, without noise.
-image: /images/projects/o-castro.png
+image: /images/projects/o-castro.webp
+imageWidth: 1605
+imageHeight: 1198
 ---

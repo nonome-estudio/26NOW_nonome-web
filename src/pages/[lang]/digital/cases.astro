@@ -21,7 +21,9 @@ const items = entries
     title: fallbackText(data.title, lang),
     description: fallbackText(data.description, lang),
     imageSrc: data.image,
-    imageAlt: fallbackText(data.title, lang)
+    imageAlt: fallbackText(data.title, lang),
+    imageWidth: data.imageWidth,
+    imageHeight: data.imageHeight
   }));
 ---
 

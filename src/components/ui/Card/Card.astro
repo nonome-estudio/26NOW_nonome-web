@@ -2,11 +2,19 @@
 import styles from './Card.module.css';
 import type { CardProps } from './Card.types';
 
-const { title, description, imageSrc, imageAlt } = Astro.props as CardProps;
+const { title, description, imageSrc, imageAlt, imageWidth, imageHeight } = Astro.props as CardProps;
 ---
 
 <article class={styles.card} tabindex="0" role="button" aria-expanded="false" data-card data-open="false">
-  {imageSrc ? <img class={styles.img} src={imageSrc} alt={imageAlt ?? ''} loading="lazy" /> : null}
+  {imageSrc ? (
+    <img
+      class={styles.img}
+      src={imageSrc}
+      alt={imageAlt ?? ''}
+      loading="lazy"
+      {...(imageWidth && imageHeight ? { width: imageWidth, height: imageHeight } : {})}
+    />
+  ) : null}
 
   <div class={styles.body}>
     <div class={styles.title}>{title}</div>
