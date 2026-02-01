@@ -2,11 +2,6 @@
 
 Public repository for the Nonome website.
 
-## Why is this repo public?
-This is a public-facing website. Keeping the repository public enables simple, low-cost hosting via GitHub Pages.
-
-> Note: Do not commit secrets. This project should not require any runtime secrets.
-
 ## Tech
 - Astro (SSG)
 - TypeScript
