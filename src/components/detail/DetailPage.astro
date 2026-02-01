@@ -1,0 +1,99 @@
+---
+import type { Lang } from '../../lib/i18n/i18n';
+import { fallbackText } from '../../lib/i18n/i18n';
+import type { CollectionEntry } from 'astro:content';
+
+import Header from '../layout/Header.astro';
+import Footer from '../layout/Footer.astro';
+import ObjectInformation from './ObjectInformation.astro';
+import ContentBlocks from './ContentBlocks.astro';
+
+type AnyEntry =
+  | CollectionEntry<'architecture'>
+  | CollectionEntry<'cases'>
+  | CollectionEntry<'services'>;
+
+const {
+  lang,
+  collection,
+  entry,
+  backHref,
+  backLabel,
+  pageTitleSuffix
+} = Astro.props as {
+  lang: Lang;
+  collection: 'architecture' | 'cases' | 'services';
+  entry: AnyEntry;
+  backHref: string;
+  backLabel: string;
+  pageTitleSuffix: string;
+};
+
+const { data } = entry;
+const title = fallbackText(data.title as any, lang);
+const description = fallbackText(data.description as any, lang);
+const imageSrc = (data as any).image as string;
+
+// Markdown body is always available for content collections.
+const rendered = await entry.render();
+const Content = rendered.Content;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}{pageTitleSuffix ? ` · ${pageTitleSuffix}` : ''} · Nonome</title>
+  </head>
+  <body>
+    <Header lang={lang} />
+
+    <main class="main">
+      <nav class="breadcrumbs">
+        <a class="back" href={backHref}>← {backLabel}</a>
+      </nav>
+
+      <header class="hero">
+        <h1 class="title">{title}</h1>
+        {description ? <p class="desc">{description}</p> : null}
+      </header>
+
+      {imageSrc ? (
+        <figure class="figure">
+          <img class="img" src={imageSrc} alt={title} loading="eager" />
+        </figure>
+      ) : null}
+
+      <ObjectInformation lang={lang} collection={collection} data={data as any} />
+
+      <ContentBlocks lang={lang} blocks={(data as any).content} Content={Content} />
+
+      <section class="meta" aria-label="Internal">
+        <div class="metaRow"><span class="k">ID</span><span class="v">{(data as any).id}</span></div>
+        <div class="metaRow"><span class="k">Slug</span><span class="v">{entry.slug}</span></div>
+        <div class="metaRow"><span class="k">Collection</span><span class="v">{collection}</span></div>
+      </section>
+    </main>
+
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style>
+  html,body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden;}
+  *{box-sizing:border-box;}
+  .main{padding:32px 24px 48px;max-width:960px;margin:0 auto;}
+  .breadcrumbs{margin:0 0 18px;}
+  .back{display:inline-block;text-decoration:none;color:inherit;opacity:.75;}
+  .back:hover{opacity:1;text-decoration:underline;}
+  .hero{margin:0 0 18px;}
+  .title{margin:0 0 10px;font-size:18px;letter-spacing:.02em;text-transform:lowercase;}
+  .desc{margin:0;opacity:.75;white-space:pre-line;}
+  .figure{margin:18px 0 22px;}
+  .img{width:100%;height:auto;display:block;border-radius:10px;}
+  .meta{margin:16px 0 0;border:1px solid rgba(0,0,0,.1);border-radius:10px;padding:12px 14px;}
+  .metaRow{display:flex;gap:12px;justify-content:space-between;padding:6px 0;border-top:1px solid rgba(0,0,0,.06);} 
+  .metaRow:first-child{border-top:none;}
+  .k{opacity:.6;}
+  .v{opacity:.85;text-align:right;}
+</style>

@@ -1,0 +1,71 @@
+---
+import type { Lang } from '../../lib/i18n/i18n';
+import { fallbackText } from '../../lib/i18n/i18n';
+
+type LocalizedText = { es: string; en?: string };
+
+type TextBlock = { type: 'text'; markdown: string };
+type ImageBlock = { type: 'image'; src: string; alt?: string; caption?: LocalizedText };
+type VideoBlock = { type: 'video'; src: string; poster?: string; caption?: LocalizedText };
+export type ContentBlock = TextBlock | ImageBlock | VideoBlock;
+
+const { lang, blocks, Content } = Astro.props as {
+  lang: Lang;
+  blocks?: ContentBlock[];
+  Content?: any;
+};
+---
+
+<section class="content" aria-label="Content">
+  {blocks?.length ? (
+    <div class="blocks">
+      {blocks.map((b) => {
+        if (b.type === 'text') {
+          // Keep it simple for now: show the markdown as plain text.
+          // (We can add a proper markdown renderer later.)
+          return (
+            <div class="block text">
+              <pre class="pre">{b.markdown}</pre>
+            </div>
+          );
+        }
+
+        if (b.type === 'image') {
+          const caption = b.caption ? fallbackText(b.caption, lang) : undefined;
+          return (
+            <figure class="block image">
+              <img class="img" src={b.src} alt={b.alt ?? ''} loading="lazy" />
+              {caption ? <figcaption class="caption">{caption}</figcaption> : null}
+            </figure>
+          );
+        }
+
+        // video
+        const caption = b.caption ? fallbackText(b.caption, lang) : undefined;
+        return (
+          <figure class="block video">
+            <video class="videoEl" controls playsinline poster={b.poster}>
+              <source src={b.src} />
+            </video>
+            {caption ? <figcaption class="caption">{caption}</figcaption> : null}
+          </figure>
+        );
+      })}
+    </div>
+  ) : Content ? (
+    <article class="markdown">
+      <Content />
+    </article>
+  ) : null}
+</section>
+
+<style>
+  .content{margin:18px 0 0;}
+  .blocks{display:flex;flex-direction:column;gap:14px;}
+  .block{margin:0;}
+  .img,.videoEl{width:100%;height:auto;display:block;border-radius:10px;}
+  .caption{margin:8px 2px 0;opacity:.7;font-size:12px;}
+  .markdown{opacity:.92;line-height:1.55;}
+  .text{opacity:.92;line-height:1.55;}
+  .pre{margin:0;white-space:pre-wrap;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+</style>

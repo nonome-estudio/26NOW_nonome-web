@@ -12,4 +12,14 @@ description:
     Lightweight web viewer to share IFC models.
     Fast, controlled access without installing software.
 image: /images/digital/cases/ifc-viewer-website.svg
+
+tags: ["ifc", "web", "viewer"]
+
+content:
+  - type: text
+    markdown: |-
+      ### What it is
+      Un visor IFC en web pensado para compartir modelos sin fricción.
+
+      **Notas:** esto es un mock.
 ---

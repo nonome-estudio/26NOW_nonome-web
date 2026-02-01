@@ -1,0 +1,53 @@
+---
+import type { Lang } from '../../lib/i18n/i18n';
+import { fallbackText } from '../../lib/i18n/i18n';
+
+type LocalizedText = { es: string; en?: string };
+
+type BaseData = {
+  id: string;
+  tags?: string[];
+};
+
+type ArchitectureData = BaseData & {
+  year?: number;
+  location?: LocalizedText;
+  awards?: string[];
+};
+
+const { lang, collection, data } = Astro.props as {
+  lang: Lang;
+  collection: 'architecture' | 'cases' | 'services';
+  data: BaseData | ArchitectureData;
+};
+
+const tags = (data.tags ?? []).filter(Boolean);
+
+const rows: Array<{ k: string; v: string | null }> = [];
+
+if (collection === 'architecture') {
+  const a = data as ArchitectureData;
+  if (a.year) rows.push({ k: 'Year', v: String(a.year) });
+  if (a.location) rows.push({ k: 'Location', v: fallbackText(a.location, lang) });
+  const awards = (a.awards ?? []).filter(Boolean);
+  if (awards.length) rows.push({ k: 'Awards', v: awards.join(', ') });
+}
+
+if (tags.length) rows.push({ k: 'Tags', v: tags.join(', ') });
+---
+
+{rows.length ? (
+  <section class="meta" aria-label="Object information">
+    {rows.map((r) => (
+      <div class="metaRow"><span class="k">{r.k}</span><span class="v">{r.v ?? '—'}</span></div>
+    ))}
+  </section>
+) : null}
+
+<style>
+  .meta{margin:16px 0 0;border:1px solid rgba(0,0,0,.1);border-radius:10px;padding:12px 14px;}
+  .metaRow{display:flex;gap:12px;justify-content:space-between;padding:6px 0;border-top:1px solid rgba(0,0,0,.06);} 
+  .metaRow:first-child{border-top:none;}
+  .k{opacity:.6;}
+  .v{opacity:.85;text-align:right;}
+</style>

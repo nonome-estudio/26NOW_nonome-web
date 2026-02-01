@@ -12,4 +12,14 @@ description:
     Custom sites and tools to communicate and operate.
     Clean, fast interfaces designed around user experience.
 image: /images/digital/services/web-development.svg
+
+tags: ["web", "frontend", "astro"]
+
+content:
+  - type: text
+    markdown: |-
+      ### Alcance (mock)
+      - Web corporativa
+      - Landing pages
+      - Herramientas internas ligeras
 ---
