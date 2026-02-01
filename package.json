@@ -11,5 +11,9 @@
   "dependencies": {
     "astro": "^5.17.1",
     "marked": "^12.0.2"
+  },
+  "devDependencies": {
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5"
   }
 }
