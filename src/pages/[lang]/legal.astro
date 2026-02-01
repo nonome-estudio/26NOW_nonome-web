@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../../lib/i18n/i18n';
 import { LANGS } from '../../lib/i18n/i18n';
+import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 
@@ -55,41 +56,32 @@ const t = {
 };
 ---
 
-<html lang={lang}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{t.title}</title>
-  </head>
-  <body>
-    <Header lang={lang} />
+<Layout lang={lang} title={t.title}>
+  <Header lang={lang} />
 
-    <main class="main">
-      <h1>{t.h1}</h1>
+  <main class="main">
+    <h1>{t.h1}</h1>
 
-      <section>
-        <h2>{t.noticeTitle}</h2>
-        {t.notice.map((line) => <p>{line}</p>)}
-      </section>
+    <section>
+      <h2>{t.noticeTitle}</h2>
+      {t.notice.map((line) => <p>{line}</p>)}
+    </section>
 
-      <section>
-        <h2>{t.privacyTitle}</h2>
-        {t.privacy.map((line) => <p>{line}</p>)}
-      </section>
+    <section>
+      <h2>{t.privacyTitle}</h2>
+      {t.privacy.map((line) => <p>{line}</p>)}
+    </section>
 
-      <section>
-        <h2>{t.cookiesTitle}</h2>
-        {t.cookies.map((line) => <p>{line}</p>)}
-      </section>
-    </main>
+    <section>
+      <h2>{t.cookiesTitle}</h2>
+      {t.cookies.map((line) => <p>{line}</p>)}
+    </section>
+  </main>
 
-    <Footer lang={lang} />
-  </body>
-</html>
+  <Footer lang={lang} />
+</Layout>
 
 <style>
-  html,body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden;}
-  *{box-sizing:border-box;}
   .main{padding:32px 24px 0;max-width:920px;}
   h1{margin:0 0 16px;font-size:18px;letter-spacing:.02em;text-transform:lowercase;}
   h2{margin:28px 0 8px;font-size:14px;letter-spacing:.02em;text-transform:lowercase;}
