@@ -13,3 +13,74 @@ const { items } = Astro.props as CardGridProps;
     </div>
   ))}
 </section>
+
+<script>
+  // Mobile/touch behavior (delegated):
+  // - 1st tap: select/expand (reveal description)
+  // - tap outside: closes
+  // - Enter/Space: toggles
+  //
+  // Important: this script may be included multiple times (multiple grids).
+  // Guard with a global flag so we only ever register ONE set of listeners.
+  (() => {
+    const g = globalThis;
+    if (g.__nonomeCardExpandDelegationInit) return;
+    g.__nonomeCardExpandDelegationInit = true;
+
+    const selector = '[data-card]';
+
+    function setOpen(el, open) {
+      el.setAttribute('data-open', open ? 'true' : 'false');
+      el.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    function closeAll(except) {
+      const openCards = document.querySelectorAll(`${selector}[data-open="true"]`);
+      for (const el of openCards) {
+        if (el !== except) setOpen(el, false);
+      }
+    }
+
+    document.addEventListener(
+      'click',
+      (e) => {
+        const t = e.target;
+        if (!(t instanceof Element)) return;
+
+        const card = t.closest(selector);
+        if (card) {
+          // v1: no navigation, so a click becomes a "select/expand" interaction.
+          e.preventDefault();
+
+          const isOpen = card.getAttribute('data-open') === 'true';
+          if (!isOpen) {
+            closeAll(card);
+            setOpen(card, true);
+          } else {
+            // v2: navigate to detail. For v1 keep it selected.
+            setOpen(card, true);
+          }
+          return;
+        }
+
+        // Tap/click outside closes.
+        closeAll();
+      },
+      { passive: false }
+    );
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const t = e.target;
+      if (!(t instanceof Element)) return;
+
+      const card = t.closest(selector);
+      if (!card) return;
+
+      e.preventDefault();
+      const isOpen = card.getAttribute('data-open') === 'true';
+      closeAll(card);
+      setOpen(card, !isOpen);
+    });
+  })();
+</script>
