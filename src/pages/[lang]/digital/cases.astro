@@ -27,12 +27,12 @@ const items = entries
   }));
 ---
 
-<Layout lang={lang} title="Digital Cases · Nonome">
+<Layout lang={lang} title={lang === 'es' ? 'Digital · Casos · Nonome' : 'Digital Cases · Nonome'}>
   <Header lang={lang} />
 
   <main class="pageMain pageMain--top">
     <div class="container">
-      <h1 class="pageTitle">digital · cases</h1>
+      <h1 class="pageTitle">{lang === 'es' ? 'digital · casos' : 'digital · cases'}</h1>
     </div>
 
     <CardGrid items={items} />

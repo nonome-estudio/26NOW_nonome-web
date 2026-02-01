@@ -10,6 +10,15 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Lang };
+const isEs = lang === 'es';
+
+const t = {
+  tagline: isEs
+    ? 'arquitectura + procesos digitales, diseñados como una experiencia limpia.'
+    : 'architecture + digital processes, designed as a clean experience.',
+  tileArchitecture: isEs ? 'arquitectura' : 'architecture',
+  tileDigital: isEs ? 'digital' : 'digital'
+};
 ---
 
 <Layout lang={lang} title="Nonome">
@@ -19,12 +28,12 @@ const { lang } = Astro.params as { lang: Lang };
     <div class="container--wide">
       <div class="hero">
         <h1 class="brandTitle">nonome</h1>
-        <p class="brandDesc">architecture + digital processes, designed as a clean experience.</p>
+        <p class="brandDesc">{t.tagline}</p>
       </div>
 
       <div class="split">
-        <a class="tile" href={`/${lang}/architecture`}>architecture</a>
-        <a class="tile" href={`/${lang}/digital/services`}>digital</a>
+        <a class="tile" href={`/${lang}/architecture`}>{t.tileArchitecture}</a>
+        <a class="tile" href={`/${lang}/digital/services`}>{t.tileDigital}</a>
       </div>
     </div>
   </main>
