@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.17.1",
-    "marked": "^12.0.2"
+    "marked": "^17.0.1"
   },
   "devDependencies": {
     "png-to-ico": "^3.0.1",
