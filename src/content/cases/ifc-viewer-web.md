@@ -13,28 +13,4 @@ description:
     Fast, controlled access without installing software.
 image: /images/digital/cases/ifc-viewer-website.svg
 
-tags: ["ifc", "web", "viewer"]
-
-content:
-  - type: text
-    markdown: |-
-      ### What it is
-      Un visor IFC en web pensado para compartir modelos sin fricción.
-
-      **Notas:** esto es un mock.
-
-  - type: embed
-    provider: youtube
-    url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-    title: Demo (mock)
-    caption:
-      es: Demo embebida (mock)
-
-  - type: widget
-    name: ifcViewer
-    props:
-      src: /models/demo.ifc
-      ui: minimal
-    caption:
-      es: Placeholder para un visor IFC futuro
 ---
