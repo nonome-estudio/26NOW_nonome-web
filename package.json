@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.17.1",
-    "marked": "^12.0.2"
+    "astro": "^6.1.8",
+    "marked": "^18.0.2"
   },
   "devDependencies": {
     "png-to-ico": "^3.0.1",
